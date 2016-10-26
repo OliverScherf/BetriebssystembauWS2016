@@ -1,0 +1,15 @@
+Diese Vorgabe ist zum Aufsetzen auf die Loesung der OOStuBS-Aufgabe 3 gedacht.
+
+(Geht auch mit der Loesung von Aufgabe 2, dann muss im guardian allerdings
+prologue() durch trigger() ersetzt werden und das Anlegen des Guard-Objektes
+sowie das Einbinden der guard.h in main.cc auskommentiert werden)
+
+Mit den Vorgaben kompiliert es nicht, da z.B. die Methoden des PIC verwendet
+werden.
+
+
+!!!ACHTUNG: Ueberschrieben werden:
+
+	- startup.asm
+	- guard/guardian.cc
+	- main.cc
