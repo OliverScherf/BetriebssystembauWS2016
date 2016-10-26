@@ -69,7 +69,7 @@ TOOLS = ../tools
 # Default-Werte fuer Boot von Floppy (USB/HD erkennt bootsect.asm selbst):
 BOOTDEVICE = 0:80:2:18:0:0:1
 
-BOCHSSTARTSCRIPTDIR = /home/bsb/bochs
+BOCHSSTARTSCRIPTDIR = ../../provided_resources/bsb-home/bochs
 QEMUBINDIR = /home/bsb/qemu/qemu/bin
 
 # -------------------------------------------------------------------------
