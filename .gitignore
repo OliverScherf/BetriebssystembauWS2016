@@ -32,3 +32,10 @@
 # Debug files
 *.dSYM/
 *.su
+
+# Build directories
+**/build/*
+
+# CLion project folder
+**/.idea/*
+
