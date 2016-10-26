@@ -34,7 +34,7 @@ public:
     void setpos(int x, int y);
     void getpos(int &x, int &y);
     void print(char* text, int length, unsigned char attrib);
+    void clear();
  };
 
 #endif
-
