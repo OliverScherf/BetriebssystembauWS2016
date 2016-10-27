@@ -15,4 +15,27 @@
 
 #include "object/strbuf.h"
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+Stringbuffer::Stringbuffer()
+{
+    for(unsigned short i = 0; i < BUFFER_SIZE; i++)
+        buffer[i] = ' ';
+    buffer_index = 0;
+}
+
+unsigned int Stringbuffer::get_length()
+{
+    return buffer_index; // The index of the next free space in the buffer is equl to the length.
+}
+
+void Stringbuffer::put(char c)
+{
+    buffer[buffer_index] = c;
+    if (buffer_index >= BUFFER_SIZE - 1) // if buffer full
+    {
+        flush();
+        buffer_index = 0;
+    }
+    else
+        buffer_index++;
+}

@@ -21,13 +21,51 @@
 
 #include "object/strbuf.h"
 
-class O_Stream
-/* Hier muesst ihr selbst Code vervollstaendigen */         
- {
+namespace o_sm
+{
+    const unsigned int BIN_SYSTEM = 2;
+    const unsigned int OCT_SYSTEM = 8;
+    const unsigned int DEC_SYSTEM = 10; // default
+    const unsigned int HEX_SYSTEM = 16;
+    class O_Stream;
+
+    O_Stream& endl (O_Stream& os);
+    O_Stream& bin (O_Stream& os);
+    O_Stream& oct (O_Stream& os);
+    O_Stream& dec (O_Stream& os);
+    O_Stream& hex (O_Stream& os);
+
+    char* ltoa(long number, char* str, unsigned int base);
+}
+
+class o_sm::O_Stream : public Stringbuffer
+{
 private:
-      O_Stream(const O_Stream &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */     
- };
+    O_Stream(const O_Stream &copy); // Verhindere Kopieren
+    void number_to_bin(long number, char* output_buffer, unsigned short &lenght_of_buffer);
+    unsigned int current_number_system;
+protected:
+
+public:
+    O_Stream();
+    O_Stream& operator<< (unsigned char c);
+    O_Stream& operator<< (char c);
+    O_Stream& operator<< (unsigned short number);
+    O_Stream& operator<< (short number);
+    O_Stream& operator<< (unsigned int number);
+    O_Stream& operator<< (int number);
+    O_Stream& operator<< (unsigned long number);
+    O_Stream& operator<< (long number);
+    O_Stream& operator<< (void* pointer);
+    O_Stream& operator<< (char* text);
+    O_Stream& operator<< (O_Stream& (*fkt) (O_Stream&));
+
+    void set_number_system_binary();
+    void set_number_system_octal();
+    void set_number_system_decimal();
+    void set_number_system_hexadecimal();
+};
+
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */

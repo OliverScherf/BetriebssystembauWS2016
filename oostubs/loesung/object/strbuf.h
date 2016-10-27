@@ -19,9 +19,17 @@
 class Stringbuffer
  {
 private:
-      Stringbuffer(const Stringbuffer &copy); // Verhindere Kopieren
+    Stringbuffer(const Stringbuffer &copy);
 
-/* Hier muesst ihr selbst Code vervollstaendigen */     
+protected:
+    char buffer[256];
+    unsigned short buffer_index; // index of the current buffer element.
+public:
+    const unsigned int BUFFER_SIZE = 256; // Set buffer size so 256 (self defined limit).
+    Stringbuffer();
+    unsigned int get_length();
+    void put(char c);
+    virtual void flush()=0;
  };
 
 #endif
