@@ -21,11 +21,11 @@ class CGA_Screen
 private:
     CGA_Screen(const CGA_Screen &copy); // Verhindere Kopieren
     const char* CGA_START = (char*)0xb8000;
-    char* pos;
-    int x;
-    int y;
+    unsigned int x;
+    unsigned int y;
     IO_Port cga_index;
     IO_Port cga_data;
+    void scroll();
 public:
     const unsigned int MAX_COLS = 80;
     const unsigned int MAX_ROWS = 25;

@@ -7,6 +7,10 @@ int main()
 {
     CGA_Screen screen;
     screen.clear();
-    screen.print("Hello\nWorld!", 12, 0x0f);
+    for (int i = 0; i < 300; i++)
+    {
+        for (unsigned int i = 0; i < 655306; i++); // dirty sleep
+        screen.print("Hello World!", 12, 0x0f);
+    }
     return 0;
  }
