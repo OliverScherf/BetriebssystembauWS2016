@@ -64,8 +64,12 @@ namespace o_sm {
 
     O_Stream& O_Stream::operator<<(long number)
     {
-        char buffer = sizeof(long) * current_number_system + 1;
-        *this << ĺtoa(number, buffer, current_number_system);
+        unsigned int buffer_size = sizeof(long) * 8 + 1;
+        char buffer[buffer_size];
+        put('c');
+        *this << ltoa(number, buffer, current_number_system);
+        put('c');
+        flush();
         return *this;
     }
 
@@ -145,61 +149,86 @@ namespace o_sm {
     char* ltoa(long number, char* str, unsigned int base)
     {
         char* position = str;
+        unsigned int number_of_bytes = sizeof(long);
+        unsigned long number_of_bits = number_of_bytes * 8L;
+
+        const char digits[] = "0123456789abcdef";
+        // find the leftmost bit
+        bool first_one_found = false;
+        while(number_of_bits > 0 && !first_one_found)
+        {
+            if (!first_one_found)
+            {
+                if ((number & (1<<number_of_bits - 1)) != 0)
+                {
+                    first_one_found = true;
+                    position += number_of_bits;
+                    // define string end
+                    *position = '\0';
+                }
+                else
+                    number_of_bits--;
+            }
+        }
+        int mask;
+        int shifter;
+        bool dec_or_default = false;
         switch (base)
         {
             case BIN_SYSTEM:
-                // TODO
-                unsigned long number_of_bits = sizeof(long) * 8;
-                position = str + number_of_bits;
-
-                for (bool first_one_found = false; number_of_bits >= 0; number_of_bits--)
-                {
-                    if (!first_one_found)
-                    {
-                        if (number & 1 != 0)
-                            first_one_found = true;
-                        else
-                            number >>= 1;
-                    }
-                    if (first_one_found)
-                    {
-                        *position-- = (number & 1) + '0';
-                        number >>= 1;
-                    }
-                }
+                mask = 1;
+                shifter = 1;
                 break;
             case OCT_SYSTEM:
-                // TODO
+                mask = 7;
+                shifter = 3;
                 break;
             case HEX_SYSTEM:
-                // TODO
+                mask = 15;
+                shifter = 4;
                 break;
             case DEC_SYSTEM:
             default:
-                char const digit[] = "0123456789";
+                dec_or_default = true;
+        }
+        if (dec_or_default)
+        {
+            position = str;
+            if (number < 0)
+            {
+                *position++ = '-';
+                number *= -1;
+            }
+            // define string end
+            long digit_count = number;
+            do
+            { //Move to where representation ends
+                ++position;
+                digit_count = digit_count / 10;
+            } while (digit_count);
+            *position = '\0';
 
-                if (number < 0)
+            //Move back, inserting digits as you go
+            do
+            {
+                *--position = digits[number % 10];
+                number /= 10;
+            } while (number);
+        }
+        else
+        {
+            do
+            {
+                if (number_of_bits < shifter)
                 {
-                    *position++ = '-';
-                    number *= -1;
+                    mask >>= shifter - number_of_bits;
+                    shifter = number_of_bits;
                 }
-
-                // define string end
-                int shifter = number;
-                do
-                { //Move to where representation ends
-                    ++position;
-                    shifter = shifter / 10;
-                } while(shifter);
-                position = '\0';
-
-                //Move back, inserting digits as you go
-                do
-                {
-                    *--position = digits[number%10];
-                    number /= 10;
-                } while(number);
-
+                //position -= shifter;
+                *--position = digits[number & mask];
+                number >>= shifter;
+                number_of_bits -= shifter;
+            } while (number_of_bits > 0);
         }
         return position;
 

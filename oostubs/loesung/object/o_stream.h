@@ -42,7 +42,6 @@ class o_sm::O_Stream : public Stringbuffer
 {
 private:
     O_Stream(const O_Stream &copy); // Verhindere Kopieren
-    void number_to_bin(long number, char* output_buffer, unsigned short &lenght_of_buffer);
     unsigned int current_number_system;
 protected:
 
