@@ -35,7 +35,23 @@ namespace o_sm
     O_Stream& dec (O_Stream& os);
     O_Stream& hex (O_Stream& os);
 
+
+    // TODO
+    char* ltoa(short number, char* str);
+    char* ltoa(short number, char* str, unsigned int base);
+    char* ltoa(unsigned short number, char* str);
+    char* stoa(unsigned short number, char* str, unsigned int base);
+
+    char* ltoa(int number, char* str);
+    char* ltoa(int number, char* str, unsigned int base);
+    char* ltoa(unsigned int number, char* str);
+    char* ltoa(unsigned int number, char* str, unsigned int base);
+    // TODO
+
+    char* ltoa(long number, char* str);
     char* ltoa(long number, char* str, unsigned int base);
+    char* ltoa(unsigned long number, char* str);
+    char* ltoa(unsigned long number, char* str, unsigned int base);
 }
 
 class o_sm::O_Stream : public Stringbuffer
