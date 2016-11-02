@@ -1,5 +1,6 @@
 /* $Id: main.cc 956 2008-10-19 22:24:23Z hsc $ */
 #include "device/cgastr.h"
+#include "machine/keyctrl.h"
 
 /* Hier muesst ihr selbst Code vervollstaendigen */
 
@@ -29,5 +30,17 @@ int main()
     kout << "long 1234567890L (hex): " << o_sm::hex << 1234567890L <<o_sm::endl;
     kout << "char* 0xb8000: " << o_sm::dec << (int*)0xb8000 << o_sm::endl;
     kout.flush();
+
+    kout.clear();
+
+    Keyboard_Controller keyctl;
+    Key tmp;
+    for (;;) {
+    	tmp = keyctl.key_hit();
+    	if (tmp.valid()) {
+			kout << tmp.ascii();
+			kout.flush();
+    	}
+    }
     return 0;
  }

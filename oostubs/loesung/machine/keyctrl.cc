@@ -249,8 +249,7 @@ void Keyboard_Controller::get_ascii_code ()
 //                      ausgeschaltet und die Wiederholungsrate auf
 //                      maximale Geschwindigkeit eingestellt.
 
-Keyboard_Controller::Keyboard_Controller () : 
-   ctrl_port (0x64), data_port (0x60)
+Keyboard_Controller::Keyboard_Controller () : ctrl_port (0x64), data_port (0x60)
  {
    // alle LEDs ausschalten (bei vielen PCs ist NumLock nach dem Booten an)
    set_led (led::caps_lock, false);
@@ -270,11 +269,25 @@ Keyboard_Controller::Keyboard_Controller () :
 
 Key Keyboard_Controller::key_hit ()
  {
+	// const IO_Port ctrl_port; // Status- (R) u. Steuerregister (W) - 0x64
+    // const IO_Port data_port; // Ausgabe- (R) u. Eingabepuffer (W) - 0x60
+	// 0x60 steht das Zeichen
+	// 0x64 steuerregister
+
    Key invalid;  // nicht explizit initialisierte Tasten sind ungueltig
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
-/* Hier muesst ihr selbst Code vervollstaendigen */          
- 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+   unsigned char control_register = ctrl_port.inb();
+   if (control_register & auxb) { // check if event was from mouse (auxb)
+	   data_port.inb(); // delete mouse event
+	   return invalid;
+   }
+
+   if (control_register & outb) {
+	   unsigned char data_register = data_port.inb();
+	   code  = data_register;
+	   if (key_decoded()) {
+		   return gather;
+	   }
+   }
    return invalid;
  }
 
@@ -308,18 +321,45 @@ void Keyboard_Controller::reboot ()
 
 void Keyboard_Controller::set_repeat_rate (int speed, int delay)
  {
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- 
-/* Hier muesst ihr selbst Code vervollstaendigen */          
-          
- }
+	unsigned char out_command = 0;
+	unsigned int dump = data_port.inb(); // Clear buffer
+
+	if (delay < 0 || delay > 3) {
+		delay = 0;
+	}
+	out_command |= delay << 4;
+
+	if (speed != 0x00
+			&& speed != 0x02
+			&& speed != 0x04
+			&& speed != 0x08
+			&& speed != 0x0c
+			&& speed != 0x10
+			&& speed != 0x14) {
+		speed = 0x00;
+	}
+	out_command |= speed;
+
+
+	data_port.outb(kbd_cmd::set_speed); // Command for set_speed
+	while (data_port.inb() != kbd_reply::ack); // Wait until the Keyboard send ACK (0xfa)
+
+	data_port.outb(out_command);
+}
 
 // SET_LED: setzt oder loescht die angegebene Leuchtdiode
 
 void Keyboard_Controller::set_led (char led, bool on)
  {
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
-          
+	if (on) {
+		leds |= led;
+	} else {
+		leds &= ~led;
+	}
+	// leds variable im Header
+	unsigned char out_command = 0;
+	data_port.outb(kbd_cmd::set_led); // Command for set_led
+	while (data_port.inb() != kbd_reply::ack); // Wait until the Keyboard send ACK (0xfa)
+
+	data_port.outb(leds);
  }
