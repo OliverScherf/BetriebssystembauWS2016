@@ -23,7 +23,7 @@ private:
 
 protected:
     char buffer[256];
-    unsigned short buffer_index; // index of the current buffer element.
+    unsigned int buffer_index; // index of the current buffer element.
 public:
     const unsigned int BUFFER_SIZE = 256; // Set buffer size so 256 (self defined limit).
     Stringbuffer();

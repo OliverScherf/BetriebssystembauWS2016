@@ -29,7 +29,7 @@ namespace o_sm
     const unsigned int HEX_SYSTEM = 16;
     class O_Stream;
 
-    O_Stream& endl (O_Stream& os);
+    O_Stream& endl(O_Stream& os);
     O_Stream& bin (O_Stream& os);
     O_Stream& oct (O_Stream& os);
     O_Stream& dec (O_Stream& os);

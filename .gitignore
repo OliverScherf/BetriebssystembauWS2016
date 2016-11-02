@@ -39,3 +39,9 @@
 # CLion project folder
 **/.idea/*
 
+# Eclipse specific folders/files
+**/Debug/*
+.cproject
+.project
+language.settings.xml
+

@@ -25,17 +25,15 @@ Stringbuffer::Stringbuffer()
 
 unsigned int Stringbuffer::get_length()
 {
-    return buffer_index; // The index of the next free space in the buffer is equl to the length.
+    return buffer_index; // The index of the next free space in the buffer is equal to the length.
 }
 
 void Stringbuffer::put(char c)
 {
-    buffer[buffer_index] = c;
-    if (buffer_index >= BUFFER_SIZE - 1) // if buffer full
+    buffer[buffer_index++] = c;
+    if (buffer_index >= BUFFER_SIZE) // if buffer full
     {
         flush();
         buffer_index = 0;
     }
-    else
-        buffer_index++;
 }
