@@ -59,11 +59,13 @@ void CGA_Screen::setpos(int x, int y)
     {
         this->x = 0;
         this->y++;
-        if (this->y >= MAX_ROWS) { // if end of screen
+        
+    }
+    if (this->y >= MAX_ROWS) 
+    { // if end of screen
             scroll();
             this->y--;
-        }
-    }
+    }       
 
     // compute the current position as one int as y * MAX_COLS + x
     int temp_pos = this->y * MAX_COLS  + this->x;

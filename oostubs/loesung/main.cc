@@ -27,10 +27,24 @@ int main()
     kout << "long 1234567890L (hex): " << o_sm::hex << 1234567890L <<o_sm::endl;
     kout << "char* 0xb8000: " << o_sm::dec << (int*)0xb8000 << o_sm::endl;
 
-    //kout.clear();
+    kout.flush();
+
+    for (unsigned int i = 0; i < 5000000; ++i);
+
+    kout.clear();
+
     //Demo for screen clearing and scrolling
-    for(unsigned int i=0; i<25; i++)
-        kout << "Scrolling test" << endl;
+    for(unsigned int i=0; i<30; i++)
+        kout << "Scrolling test " << o_sm::dec << i << o_sm::endl;
+
+    kout.flush();
+
+    for (unsigned int i = 0; i < 5000000; ++i);
+
+    //Demo Keyboard application
+
+    
+
 
     //Keyboard_Controller keyctl;
     //Key tmp;
