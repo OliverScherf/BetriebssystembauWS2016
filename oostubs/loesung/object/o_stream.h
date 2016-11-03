@@ -40,7 +40,7 @@ namespace o_sm
     char* ltoa(short number, char* str);
     char* ltoa(short number, char* str, unsigned int base);
     char* ltoa(unsigned short number, char* str);
-    char* stoa(unsigned short number, char* str, unsigned int base);
+    char* ltoa(unsigned short number, char* str, unsigned int base);
 
     char* ltoa(int number, char* str);
     char* ltoa(int number, char* str, unsigned int base);
