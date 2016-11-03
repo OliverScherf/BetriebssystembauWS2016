@@ -25,7 +25,7 @@ protected:
     char buffer[256];
     unsigned int buffer_index; // index of the current buffer element.
 public:
-    const unsigned int BUFFER_SIZE = 256; // Set buffer size so 256 (self defined limit).
+    const static unsigned int BUFFER_SIZE = 256; // Set buffer size so 256 (self defined limit).
     Stringbuffer();
     unsigned int get_length();
     void put(char c);

@@ -20,15 +20,16 @@ class CGA_Screen
  {
 private:
     CGA_Screen(const CGA_Screen &copy); // Verhindere Kopieren
-    const char* CGA_START = (char*)0xb8000;
+    //const char* CGA_START = (const char*)0xb8000;
+    const char* CGA_START;
     unsigned int x;
     unsigned int y;
     IO_Port cga_index;
     IO_Port cga_data;
     void scroll();
 public:
-    const unsigned int MAX_COLS = 80;
-    const unsigned int MAX_ROWS = 25;
+    const static unsigned int MAX_COLS = 80;
+    const static unsigned int MAX_ROWS = 25;
     CGA_Screen();
     void show(int x, int y, char c, unsigned char attrib);
     void setpos(int x, int y);

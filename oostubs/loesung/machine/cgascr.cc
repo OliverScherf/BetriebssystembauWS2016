@@ -14,7 +14,7 @@
 
 #include "machine/cgascr.h"
 
-CGA_Screen::CGA_Screen() : cga_index(0x3d4), cga_data(0x3d5)
+CGA_Screen::CGA_Screen() : CGA_START((const char*) 0xb8000), cga_index(0x3d4), cga_data(0x3d5)
 {
     // initialise variables
     this->x = 0;
@@ -147,7 +147,6 @@ void CGA_Screen::scroll()
 
 	for (unsigned int col_pos = 0; col_pos < BYTES_PER_ROW; col_pos++)
 	{
-
 		if(!(col_pos % 2))
 		{
 			cga_pos = (char*) CGA_START + src_pos;

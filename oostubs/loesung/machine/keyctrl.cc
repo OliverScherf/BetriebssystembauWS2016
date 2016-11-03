@@ -325,7 +325,7 @@ void Keyboard_Controller::reboot ()
 void Keyboard_Controller::set_repeat_rate (int speed, int delay)
  {
 	unsigned char out_command = 0;
-	unsigned int dump = data_port.inb(); // Clear data_port
+	data_port.inb(); // Clear data_port
 
 	// if the delay is out of the range, just set it to 0 (default)
 	if (delay < 0 || delay > 3)
@@ -359,14 +359,10 @@ void Keyboard_Controller::set_led (char led, bool on)
 	// because we can't read the led state of the keyboard, we need to remember the state
 	// in a membervariable
 	if (on)
-	{
 		leds |= led;
-	} else
-	{
+	else
 		leds &= ~led;
-	}
 
-	unsigned char out_command = 0;
 	data_port.outb(kbd_cmd::set_led); // Request to set leds
 	while (data_port.inb() != kbd_reply::ack); // Wait until the Keyboard send ACK (0xfa)
 	data_port.outb(leds); // write command
