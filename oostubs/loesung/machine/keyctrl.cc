@@ -268,34 +268,36 @@ Keyboard_Controller::Keyboard_Controller () : ctrl_port (0x64), data_port (0x60)
 //          mit Key::valid () ueberprueft werden kann.
 
 Key Keyboard_Controller::key_hit ()
- {
-	// const IO_Port ctrl_port; // Status- (R) u. Steuerregister (W) - 0x64
-    // const IO_Port data_port; // Ausgabe- (R) u. Eingabepuffer (W) - 0x60
-	// 0x60 steht das Zeichen
-	// 0x64 steuerregister
-
-   Key invalid;  // nicht explizit initialisierte Tasten sind ungueltig
+{
+   Key invalid; // the invalid key object gets returned, if no (valid) key was pressed
    unsigned char control_register = ctrl_port.inb();
-   if (control_register & auxb) { // check if event was from mouse (auxb)
+
+   // check if event was from mouse (auxb)
+   if (control_register & auxb)
+   {
 	   data_port.inb(); // delete mouse event
 	   return invalid;
    }
 
-   if (control_register & outb) {
-	   unsigned char data_register = data_port.inb();
-	   code  = data_register;
-	   if (key_decoded()) {
-		   return gather;
+   // outb is set, if a character is available
+   if (control_register & outb)
+   {
+	   unsigned char data_register = data_port.inb(); // read scancode
+	   code  = data_register; // we need to safe the scancode in the code variable, in order
+	   	   	   	   	   	   	  // to decode the key with the key_decoded() method
+	   if (key_decoded())
+	   {
+		   return gather; // gather is the decoded key
 	   }
    }
    return invalid;
- }
+}
 
 // REBOOT: Fuehrt einen Neustart des Rechners durch. Ja, beim PC macht
 //         das der Tastaturcontroller.
 
 void Keyboard_Controller::reboot ()
- {
+{
    int status;
 
    // Dem BIOS mitteilen, dass das Reset beabsichtigt war
@@ -305,10 +307,11 @@ void Keyboard_Controller::reboot ()
 
    // Der Tastaturcontroller soll das Reset ausloesen.
    do
-    { status = ctrl_port.inb ();      // warten, bis das letzte Kommando
+    {
+	   status = ctrl_port.inb ();      // warten, bis das letzte Kommando
     } while ((status & inpb) != 0);   // verarbeitet wurde.
    ctrl_port.outb (cpu_reset);        // Reset
- }
+}
 
 // SET_REPEAT_RATE: Funktion zum Einstellen der Wiederholungsrate der
 //                  Tastatur. delay bestimmt, wie lange eine Taste ge-
@@ -322,44 +325,49 @@ void Keyboard_Controller::reboot ()
 void Keyboard_Controller::set_repeat_rate (int speed, int delay)
  {
 	unsigned char out_command = 0;
-	unsigned int dump = data_port.inb(); // Clear buffer
+	unsigned int dump = data_port.inb(); // Clear data_port
 
-	if (delay < 0 || delay > 3) {
+	// if the delay is out of the range, just set it to 0 (default)
+	if (delay < 0 || delay > 3)
+	{
 		delay = 0;
 	}
-	out_command |= delay << 4;
+	out_command |= delay << 4; // delay is set on bit 5 and 6
 
+	// if the speed is not available, just set it to 0x00
 	if (speed != 0x00
 			&& speed != 0x02
 			&& speed != 0x04
 			&& speed != 0x08
 			&& speed != 0x0c
 			&& speed != 0x10
-			&& speed != 0x14) {
+			&& speed != 0x14)
+	{
 		speed = 0x00;
 	}
 	out_command |= speed;
 
-
-	data_port.outb(kbd_cmd::set_speed); // Command for set_speed
+	data_port.outb(kbd_cmd::set_speed); // Request to set speed
 	while (data_port.inb() != kbd_reply::ack); // Wait until the Keyboard send ACK (0xfa)
-
-	data_port.outb(out_command);
+	data_port.outb(out_command); // write command
 }
 
 // SET_LED: setzt oder loescht die angegebene Leuchtdiode
 
 void Keyboard_Controller::set_led (char led, bool on)
- {
-	if (on) {
+{
+	// because we can't read the led state of the keyboard, we need to remember the state
+	// in a membervariable
+	if (on)
+	{
 		leds |= led;
-	} else {
+	} else
+	{
 		leds &= ~led;
 	}
-	// leds variable im Header
-	unsigned char out_command = 0;
-	data_port.outb(kbd_cmd::set_led); // Command for set_led
-	while (data_port.inb() != kbd_reply::ack); // Wait until the Keyboard send ACK (0xfa)
 
-	data_port.outb(leds);
- }
+	unsigned char out_command = 0;
+	data_port.outb(kbd_cmd::set_led); // Request to set leds
+	while (data_port.inb() != kbd_reply::ack); // Wait until the Keyboard send ACK (0xfa)
+	data_port.outb(leds); // write command
+}
