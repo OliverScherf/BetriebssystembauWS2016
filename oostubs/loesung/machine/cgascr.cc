@@ -119,23 +119,43 @@ void CGA_Screen::clear()
 
 void CGA_Screen::scroll()
 {
-    unsigned int bytes_per_row = MAX_COLS * 2; // 2 bytes per pixel (the char + attrib)
-    unsigned char buffer; // one byte buffer
-    char* pos; // CGA memory pointer
-    unsigned int abs_pos; // the absolute pixel position
+	char buffer; 	// wird nach oben geschoben ->
+	int src_pos; 	// current position of character which should be copied
+	int dest_pos;	// destination for the old char
+	char* cga_pos; 	// pointer to character from CGA_Screen
+	const unsigned int BYTES_PER_ROW = MAX_COLS * 2;
 
-    for (unsigned int row = 1; row <= MAX_ROWS; row++) // start in the second row up to rows + 1
-    {
-        for (unsigned int item = 0; item < bytes_per_row; item++)
-        {
-            abs_pos = row * MAX_COLS + item;
-            pos = (char*)CGA_START + 2 * abs_pos;
-            buffer = (row != MAX_ROWS) ? *pos : ' '; // Store the value of pos in buffer,
-            // or an empty char for the last row.
+	for (unsigned int row_pos = 1; row_pos < MAX_ROWS; ++row_pos)
+		for (unsigned int col_pos = 0; col_pos < BYTES_PER_ROW; ++col_pos)
+		{
+			//compute source position
+			src_pos = row_pos * BYTES_PER_ROW + col_pos;
+			//comnpute destination position
+			dest_pos = src_pos - BYTES_PER_ROW;
+			//set the cga pointer to the src_pos in memory
+			cga_pos = (char*)CGA_START + src_pos;
+			//save current char at the position
+			buffer = *cga_pos;
 
-            abs_pos = (row - 1) * MAX_COLS + item; // the absolute position of the row before
-            pos = (char*)CGA_START + 2 * abs_pos;
-            *pos = buffer;
-        }
-    }
+			//set the cga pointer to the dest_pos
+			cga_pos = (char*) CGA_START + dest_pos;
+			//replace char in destination with buffered value
+			*cga_pos = buffer;
+		}
+
+	src_pos = (MAX_ROWS-1) * BYTES_PER_ROW;
+
+	for (unsigned int col_pos = 0; col_pos < BYTES_PER_ROW; col_pos++)
+	{
+
+		if(!(col_pos % 2))
+		{
+			cga_pos = (char*) CGA_START + src_pos;
+			*cga_pos = ' ';
+		}
+		else
+			*cga_pos = 0x00;
+
+		src_pos++;
+	}
 }

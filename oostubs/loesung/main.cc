@@ -31,23 +31,34 @@ int main()
 
     // for (unsigned int i = 0; i < 5000000; ++i);
 
-    kout.clear();
+    /*kout.clear();
 
-    //Demo for screen clearing and scrolling
+    Demo for screen clearing and scrolling */
     for(unsigned int i=110; i<135; i++)
     {
-        kout << o_sm::bin << "Scrolling Scrolling test Scrolling test " << (long)i << "x";
+        kout << o_sm::dec << "Scrolling Scrolling test Scrolling test " << (long)i << "x";
         kout.flush();
         kout << o_sm::endl;
     }
-        
-
-    kout.flush();
-
-    for (unsigned int i = 0; i < 5000000; ++i);
+//
+//
+//    kout.flush();
+//
+//    for (unsigned int i = 0; i < 5000000; ++i);
 
 
     //Demo Keyboard application
+//
+//    for (int i = 0; i < 1000; ++i) {
+//    	kout << "ffffffff ";
+//    	if (i % 5) {
+//    		kout << o_sm::endl;
+//    	}
+//    	kout.flush();
+//    	for (int j = 0; j < 100000; ++j);
+//    }
+
+
 
     Keyboard_Controller keyctl;
     Key tmp;

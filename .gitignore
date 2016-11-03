@@ -45,3 +45,6 @@
 .project
 language.settings.xml
 
+# Bochs out
+**/bochsout.txt
+
