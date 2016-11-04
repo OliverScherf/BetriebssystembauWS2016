@@ -135,6 +135,7 @@ namespace o_sm
     O_Stream& endl (O_Stream& os)
     {
         os << '\n';
+        os.flush();
         return os;
     }
 

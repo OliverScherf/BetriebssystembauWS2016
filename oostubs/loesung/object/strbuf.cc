@@ -18,8 +18,6 @@
 
 Stringbuffer::Stringbuffer()
 {
-    for(unsigned short i = 0; i < BUFFER_SIZE; i++)
-        buffer[i] = ' ';
     buffer_index = 0;
 }
 
