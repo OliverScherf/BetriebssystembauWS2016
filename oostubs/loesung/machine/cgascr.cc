@@ -19,6 +19,7 @@ CGA_Screen::CGA_Screen() : CGA_START((const char*) 0xb8000), cga_index(0x3d4), c
     // initialise variables
     this->x = 0;
     this->y = 0;
+    clear();
 }
 
 
@@ -113,7 +114,7 @@ void CGA_Screen::clear()
         for (unsigned int j = 0; j < MAX_COLS; j++) // iterate over cols
             // call show with ' ' and 0x00 in order to replace all existing chars
             // with ' ' and black fore- and background color
-            show(j, i, ' ', 0x00);
+            show(j, i, ' ', 0x0F);
     setpos(0,0); // set cursor back to x=0 and y=0
 }
 
