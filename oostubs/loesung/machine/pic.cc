@@ -14,4 +14,46 @@
 /* kann mit Hilfe der Klasse CPU festgelegt werden.                          */
 /*****************************************************************************/
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+/* Hier muesst ihr selbst Code vervollstaendigen */
+
+#include "machine/pic.h"
+
+/** ACCESS PORTS ON PIC!
+* Port 0x21 / 0xa1 ->     interrupt mask register (IRM) -> suppresses
+*                         selective Interrupts
+* Port 0x20 / 0xa0 ->     interrupt request register (IRR) -> PIC saves interrut
+*                             requests
+*                         interrupt service register (ISR) -> if there is more
+*                             than one interrupt PIC should forward the most
+*                             important. PIC sends INT to CPU and CPU needs to
+*                             answer with 2 INTA (interrupt accept). After
+*                             receiving 2 INTA signals the PIC sends the interrupt
+*                             number on D0-D7. Additionally the corresponding bit
+*                             in ISR is set. Bit is removed from IRR. Whenever a
+*                             new interrupt is received PIC can decide with the
+*                             ISR if the new interrupt is more important than the
+*                             old one. If so, a new INT is send to the CPU.
+*                         Interrupt vector (Int.Vek) -> contains the routine which
+*                             should be called for the specified interrupt.
+*                             guardian() is called with this information
+*                             afterwards.
+**/
+
+
+PIC::PIC() : imr_low(0x21) , imr_high(0xa1)
+{
+    imr_low.outb(keyboard);
+    imr_high.outb(0x0);
+    cpu.enable_int();
+}
+
+void PIC::allow(int interrupt_device)
+{
+
+}
+
+
+void PIC::forbid(int interrupt_device)
+{
+
+}

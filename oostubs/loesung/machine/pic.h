@@ -17,13 +17,27 @@
 #ifndef __pic_include__
 #define __pic_include__
 
+#include "machine/io_port.h"
+#include "machine/cpu.h"
+
 class PIC
- {
+{
 private:
     PIC(const PIC &copy); // Verhindere Kopieren
+    IO_Port imr_low; //interrupt mask register low byte
+    IO_Port imr_high; //interrupt mask register high byte
+    CPU cpu;
+    enum
+    {
+        timer = 0,
+        keyboard = 1
+    };
 public:
-    PIC() {}
-/* Hier muesst ihr selbst Code vervollstaendigen */          
- };
+    PIC();
+    void allow(int interrupt_device);
+    void forbid(int interrupt_device);
+
+/* Hier muesst ihr selbst Code vervollstaendigen */
+};
 
 #endif
