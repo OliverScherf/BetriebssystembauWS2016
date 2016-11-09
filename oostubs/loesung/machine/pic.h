@@ -18,7 +18,10 @@
 #define __pic_include__
 
 #include "machine/io_port.h"
-#include "machine/cpu.h"
+#include "globals.h"
+#include "device/cgastr.h"
+
+using namespace globals;
 
 class PIC
 {
@@ -26,7 +29,6 @@ private:
     PIC(const PIC &copy); // Verhindere Kopieren
     IO_Port imr_low; //interrupt mask register low byte
     IO_Port imr_high; //interrupt mask register high byte
-    CPU cpu;
     enum
     {
         timer = 0,

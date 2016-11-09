@@ -14,12 +14,22 @@
 #define __Plugbox_include__
 
 #include "guard/gate.h"
+#include "device/cgastr.h"
+#include "device/panic.h"
 
 class Plugbox
  {
 private:
     Plugbox(const Plugbox &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+    static const int PLUGBOX_SIZE = 64;
+    Gate* gates[PLUGBOX_SIZE];
+	Panic panic;	
+public:
+	Plugbox();
+	void assign(unsigned int slot, Gate& gate);
+	Gate& report(unsigned int slot);
+	const int TIMER = 32;
+	const int KEYBOARD = 33;
  };
 
 #endif

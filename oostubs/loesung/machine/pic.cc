@@ -18,6 +18,7 @@
 
 #include "machine/pic.h"
 
+
 /** ACCESS PORTS ON PIC!
 * Port 0x21 / 0xa1 ->     interrupt mask register (IRM) -> suppresses
 *                         selective Interrupts
@@ -42,18 +43,24 @@
 
 PIC::PIC() : imr_low(0x21) , imr_high(0xa1)
 {
-    imr_low.outb(keyboard);
-    imr_high.outb(0x0);
-    cpu.enable_int();
+    cpu.enable_int(); //enable interrupts on the cpu
 }
 
 void PIC::allow(int interrupt_device)
 {
-
+	char buffer;
+	//read current state of 0x21
+	buffer = imr_low.inb();
+	//the interrupt_device bit needs to be set to 0 in order to activate interrupt
+    imr_low.outb(buffer & ~(1 << interrupt_device)); 
 }
 
 
 void PIC::forbid(int interrupt_device)
 {
-
+	char buffer;
+	//read current state of 0x21
+	buffer = imr_low.inb();
+	//the interrupt_device bit needs to be set to 1 in order to deactivate interrupt
+    imr_low.outb(buffer | (1 << interrupt_device));
 }

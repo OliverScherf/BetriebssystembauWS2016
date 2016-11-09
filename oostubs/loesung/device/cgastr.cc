@@ -13,14 +13,16 @@
 
 #include "device/cgastr.h"
 
-
-CGA_Stream::CGA_Stream()
+namespace cga_sm 
 {
+	CGA_Stream::CGA_Stream()
+	{
 
-}
+	}
 
-void CGA_Stream::flush()
-{
-    print(buffer, buffer_index, 0x0F);
-    buffer_index = 0;
+	void CGA_Stream::flush()
+	{
+	    print(buffer, buffer_index, 0x0F);
+	    buffer_index = 0;
+	}
 }

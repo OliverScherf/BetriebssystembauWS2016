@@ -21,7 +21,7 @@
 
 #include "object/strbuf.h"
 
-namespace o_sm
+namespace cga_sm
 {
     const unsigned int BIN_SYSTEM = 2;
     const unsigned int OCT_SYSTEM = 8;
@@ -54,7 +54,7 @@ namespace o_sm
     char* ltoa(unsigned long number, char* str, unsigned int base);
 }
 
-class o_sm::O_Stream : public Stringbuffer
+class cga_sm::O_Stream : public Stringbuffer
 {
 private:
     O_Stream(const O_Stream &copy); // Verhindere Kopieren

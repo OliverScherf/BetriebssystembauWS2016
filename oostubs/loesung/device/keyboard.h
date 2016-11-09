@@ -15,7 +15,7 @@
 #include "guard/gate.h"
 #include "machine/key.h"
  
-class Keyboard 
+class Keyboard : public Gate
 /* Hier muesst ihr selbst Code vervollstaendigen */         
 {        
 private:
@@ -26,7 +26,8 @@ public:
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
  
       // PLUGIN: 'Anstoepseln' der Tastatur. Ab sofort werden Tasten erkannt.
-      void plugin ();
+      void plugin();
+      void trigger();
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
         

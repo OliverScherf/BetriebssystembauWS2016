@@ -16,7 +16,6 @@
          
 /* GLOBALE VARIABLEN */
 
-extern CGA_Stream kout;
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
          
 void Application::action ()

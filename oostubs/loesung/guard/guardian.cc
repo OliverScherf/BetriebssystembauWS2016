@@ -13,6 +13,9 @@
 
 /* FUNKTIONEN */
 #include "device/cgastr.h"
+#include "machine/keyctrl.h"
+
+using namespace cga_sm;
 
 extern "C" void guardian (unsigned int slot);
 
@@ -22,6 +25,6 @@ extern "C" void guardian (unsigned int slot);
 void guardian (unsigned int slot)
 {
     CGA_Stream kout;
-    kout << "Interrupt received, slot no: " << o_sm::dec << slot << o_sm::endl;
-    for (unsigned int i = 0; i < 1000000; i++);
+    if(slot==33)     
+        kout << "Hello from Keyboard " << endl;
 }

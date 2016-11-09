@@ -18,7 +18,7 @@
 
 #include "object/o_stream.h"
 
-namespace o_sm
+namespace cga_sm
 {
     O_Stream::O_Stream()
     {

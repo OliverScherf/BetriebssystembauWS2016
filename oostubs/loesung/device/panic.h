@@ -14,17 +14,22 @@
 /* INCLUDES */
 
 #include "guard/gate.h"
+#include "device/cgastr.h"
 
-class Panic 
+using namespace globals;
+using namespace cga_sm;
+
+class Panic : public Gate
 /* Hier muesst ihr selbst Code vervollstaendigen */         
- {
+{
 private:
     Panic (const Panic &copy); // Verhindere Kopieren
 public:
     Panic () {}
+    void trigger();
 /* Hier muesst ihr selbst Code vervollstaendigen */                  
           
- };
+};
 
 #endif
 
