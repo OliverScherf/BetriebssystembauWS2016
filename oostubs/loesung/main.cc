@@ -6,6 +6,7 @@
 
 int main()
 {
+    //Demo for different number systems
 	CGA_Stream kout;
 	kout.clear();
 	kout << "Number Test!" << o_sm::endl;
