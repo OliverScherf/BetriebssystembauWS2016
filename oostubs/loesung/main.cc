@@ -13,6 +13,7 @@ int main()
 {
     kout << "Hello world" << endl;
 	PIC pic;
+  kout << "Hodor" << endl;
 	while(true);
     return 0;
  }

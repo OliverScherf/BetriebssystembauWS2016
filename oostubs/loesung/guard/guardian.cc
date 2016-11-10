@@ -14,8 +14,10 @@
 /* FUNKTIONEN */
 #include "device/cgastr.h"
 #include "machine/keyctrl.h"
+#include "globals.h"
 
 using namespace cga_sm;
+using namespace globals;
 
 extern "C" void guardian (unsigned int slot);
 
@@ -24,7 +26,6 @@ extern "C" void guardian (unsigned int slot);
 
 void guardian (unsigned int slot)
 {
-    CGA_Stream kout;
-    if(slot==33)     
-        kout << "Hello from Keyboard " << endl;
+
+  plugbox.report(slot).trigger();
 }

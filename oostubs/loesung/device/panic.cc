@@ -17,7 +17,6 @@ using namespace cga_sm;
 
 void Panic::trigger()
 {
-
 	kout << "Error! Kernel Panic!" << endl;
 	cpu.halt();
 }
