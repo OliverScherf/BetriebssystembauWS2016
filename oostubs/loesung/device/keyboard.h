@@ -14,6 +14,7 @@
 #include "machine/keyctrl.h"
 #include "guard/gate.h"
 #include "machine/key.h"
+#include "globals.h"
 
 class Keyboard : public Gate
 /* Hier muesst ihr selbst Code vervollstaendigen */
