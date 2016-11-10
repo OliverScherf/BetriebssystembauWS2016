@@ -12,24 +12,20 @@
 #define __panic_include__
 
 /* INCLUDES */
-
 #include "guard/gate.h"
 #include "device/cgastr.h"
-
-using namespace globals;
-using namespace cga_sm;
+#include "globals.h"
 
 class Panic : public Gate
-/* Hier muesst ihr selbst Code vervollstaendigen */         
+/* Hier muesst ihr selbst Code vervollstaendigen */
 {
 private:
     Panic (const Panic &copy); // Verhindere Kopieren
 public:
     Panic () {}
     void trigger();
-/* Hier muesst ihr selbst Code vervollstaendigen */                  
-          
+/* Hier muesst ihr selbst Code vervollstaendigen */
+
 };
 
 #endif
-

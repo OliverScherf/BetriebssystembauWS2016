@@ -21,8 +21,6 @@
 #include "globals.h"
 #include "device/cgastr.h"
 
-using namespace globals;
-
 class PIC
 {
 private:

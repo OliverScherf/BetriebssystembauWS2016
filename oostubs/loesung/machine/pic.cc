@@ -40,6 +40,7 @@
 *                             afterwards.
 **/
 
+using namespace globals;
 
 PIC::PIC() : imr_low(0x21) , imr_high(0xa1)
 {
@@ -52,7 +53,7 @@ void PIC::allow(int interrupt_device)
 	//read current state of 0x21
 	buffer = imr_low.inb();
 	//the interrupt_device bit needs to be set to 0 in order to activate interrupt
-    imr_low.outb(buffer & ~(1 << interrupt_device)); 
+    imr_low.outb(buffer & ~(1 << interrupt_device));
 }
 
 

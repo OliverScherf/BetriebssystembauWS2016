@@ -10,24 +10,22 @@
 /* exception festlegen.                                                      */
 /*****************************************************************************/
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+/* Hier muesst ihr selbst Code vervollstaendigen */
 
 #include "machine/plugbox.h"
 
 Plugbox::Plugbox()
 {
 	for (int i = 0; i < PLUGBOX_SIZE; ++i)
-		gates[i] = &panic;
+		gates[i] = &globals::panic;
 }
 
 void Plugbox::assign(unsigned int slot, Gate& gate)
 {
-	gates[slot] = gate;
+	gates[slot] = &gate;
 }
 
 Gate& Plugbox::report(unsigned int slot)
 {
-	
 	return *gates[slot];
-
-	}
+}

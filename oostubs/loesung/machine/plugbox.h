@@ -15,7 +15,7 @@
 
 #include "guard/gate.h"
 #include "device/cgastr.h"
-#include "device/panic.h"
+#include "globals.h"
 
 class Plugbox
  {
@@ -23,7 +23,6 @@ private:
     Plugbox(const Plugbox &copy); // Verhindere Kopieren
     static const int PLUGBOX_SIZE = 64;
     Gate* gates[PLUGBOX_SIZE];
-	Panic panic;	
 public:
 	Plugbox();
 	void assign(unsigned int slot, Gate& gate);

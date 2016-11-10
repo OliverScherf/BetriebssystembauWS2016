@@ -9,10 +9,6 @@
 using namespace cga_sm;
 using namespace globals;
 
-CGA_Stream cga_sm::kout;
-CPU globals::cpu;
-Plugbox globals::plugbox;
-
 int main()
 {
     kout << "Hello world" << endl;
