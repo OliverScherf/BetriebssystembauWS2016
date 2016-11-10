@@ -27,12 +27,12 @@ private:
     PIC(const PIC &copy); // Verhindere Kopieren
     IO_Port imr_low; //interrupt mask register low byte
     IO_Port imr_high; //interrupt mask register high byte
+public:
     enum
     {
         timer = 0,
         keyboard = 1
     };
-public:
     PIC();
     void allow(int interrupt_device);
     void forbid(int interrupt_device);

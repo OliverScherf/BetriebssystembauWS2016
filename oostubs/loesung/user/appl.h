@@ -11,15 +11,16 @@
 #ifndef __application_include__
 #define __application_include__
 
-class Application 
- 
- {
+#include "device/cgastr.h"
+
+class Application
+{
+
 private:
     Application (const Application &copy); // Verhindere Kopieren
 
 public:
-/* Hier muesst ihr selbst Code vervollstaendigen */                  
-          
+    Application();
     void action ();
  };
 

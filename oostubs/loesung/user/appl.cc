@@ -11,15 +11,22 @@
 /* INCLUDES */
 
 #include "user/appl.h"
-#include "device/cgastr.h"
-/* Hier muesst ihr selbst Code vervollstaendigen */         
-         
+/* Hier muesst ihr selbst Code vervollstaendigen */
+
+using namespace cga_sm;
 /* GLOBALE VARIABLEN */
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
-         
+/* Hier muesst ihr selbst Code vervollstaendigen */
+
+Application::Application()
+{
+
+}
+
 void Application::action ()
  {
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- 
+/* Hier muesst ihr selbst Code vervollstaendigen */
+    kout.setpos(0, 20);
+    kout << "Application!!!";
+    kout.flush();
  }

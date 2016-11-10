@@ -11,15 +11,15 @@
 // forward declaration
 class Panic;
 class Plugbox;
-class Pic;
 class Keyboard;
+class PIC;
 
 namespace globals
 {
 		extern Plugbox plugbox;
     extern CPU cpu;
 		extern Panic panic;
-		extern Pic pic;
+		extern PIC pic;
 		extern Keyboard keyboard;
 }
 

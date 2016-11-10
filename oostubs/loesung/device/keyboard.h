@@ -14,9 +14,10 @@
 #include "machine/keyctrl.h"
 #include "guard/gate.h"
 #include "machine/key.h"
+#include "device/cgastr.h"
 #include "globals.h"
 
-class Keyboard : public Gate
+class Keyboard : public Gate, public Keyboard_Controller
 /* Hier muesst ihr selbst Code vervollstaendigen */
 {
 private:
@@ -25,7 +26,7 @@ private:
 
 public:
 /* Hier muesst ihr selbst Code vervollstaendigen */
-
+      Keyboard();
       // PLUGIN: 'Anstoepseln' der Tastatur. Ab sofort werden Tasten erkannt.
       void plugin();
       void trigger();
