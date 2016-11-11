@@ -14,6 +14,7 @@ int main()
   kout << "Interrupt test!!!";
   kout.flush();
 	keyboard.plugin();
+  //pic.allow(pic.timer); /* Handler not implemented, Kernel panic ;-) */
   kout.setpos(0, 10);
   kout << "Keyboard: ";
   kout.flush();
