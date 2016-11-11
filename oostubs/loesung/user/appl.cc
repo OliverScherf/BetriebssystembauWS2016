@@ -26,7 +26,7 @@ Application::Application()
 void Application::action ()
  {
 /* Hier muesst ihr selbst Code vervollstaendigen */
-    kout.setpos(0, 20);
+    kout.setpos(20, 20);
     kout << "Application!!!";
     kout.flush();
  }
