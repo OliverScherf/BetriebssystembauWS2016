@@ -14,8 +14,22 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */
 class Gate
 {
-    public:
-        virtual void trigger() = 0;
+private:
+	bool isQueued;
+
+public:
+	virtual void trigger() = 0;
+	virtual void epilogue() {};
+	virtual bool prologue() = 0;
+
+	void queued(bool q)
+	{
+		isQueued = q;
+	}
+	bool queued()
+	{
+		return isQueued;
+	}
 };
 
 

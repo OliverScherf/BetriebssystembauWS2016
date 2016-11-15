@@ -24,6 +24,7 @@ private:
 public:
     Panic () {}
     void trigger();
+    bool prologue();
 /* Hier muesst ihr selbst Code vervollstaendigen */
 
 };

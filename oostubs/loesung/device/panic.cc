@@ -20,3 +20,8 @@ void Panic::trigger()
 	kout << "Error: Kernel Panic!" << endl;
 	cpu.halt();
 }
+
+bool Panic::prologue()
+{
+
+}

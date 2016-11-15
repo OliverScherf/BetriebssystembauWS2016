@@ -17,4 +17,12 @@
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 
+class Secure
+{
+public:
+	Secure();
+	~Secure();
+};
+
+
 #endif

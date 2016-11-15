@@ -16,13 +16,18 @@
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
         
+#include "locker.h"
+#include "guard/gate.h"
+
 class Guard : public Locker
  {
 private:
     Guard (const Guard &copy); // Verhindere Kopieren
 public:
     Guard () {}
-/* Hier muesst ihr selbst Code vervollstaendigen */          
+    void leave();
+    void relay(Gate* item);
+
  };
 
 #endif

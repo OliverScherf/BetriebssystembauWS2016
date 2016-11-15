@@ -25,14 +25,13 @@ private:
 /* Hier muesst ihr selbst Code vervollstaendigen */
 
 public:
-/* Hier muesst ihr selbst Code vervollstaendigen */
       Keyboard();
       // PLUGIN: 'Anstoepseln' der Tastatur. Ab sofort werden Tasten erkannt.
       void plugin();
       void trigger();
 
-/* Hier muesst ihr selbst Code vervollstaendigen */
-
+      bool prologue();
+      void epilogue();
  };
 
 #endif

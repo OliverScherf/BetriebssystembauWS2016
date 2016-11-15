@@ -16,10 +16,16 @@
 #define __Locker_include__
 
 class Locker
- {
+{
 private:
-    Locker(const Locker &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- };
+	Locker(const Locker &copy); // Verhindere Kopieren
+			/* Hier muesst ihr selbst Code vervollstaendigen */
+public:
+	Locker ();
+	inline void enter();
+	inline void retne();
+	inline bool avail();
+
+};
 
 #endif

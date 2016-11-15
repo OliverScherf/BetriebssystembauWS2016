@@ -12,3 +12,15 @@
 /*****************************************************************************/
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+#include "guard/guard.h"
+
+void Guard::leave()
+{
+
+}
+
+void Guard::relay(Gate* item)
+{
+
+}
