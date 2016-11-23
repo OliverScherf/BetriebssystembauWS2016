@@ -7,13 +7,15 @@
 
 #include "guard/secure.h"
 
+ using namespace globals;
+
 Secure::Secure()
 {
-
+	guard.enter();	
 }
 Secure::~Secure()
 {
-
+	guard.leave();
 }
 
 

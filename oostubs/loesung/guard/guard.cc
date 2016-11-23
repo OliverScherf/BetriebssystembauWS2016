@@ -11,16 +11,37 @@
 /* auf den kritischen Abschnitt zugreifen.                                   */
 /*****************************************************************************/
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
 
 #include "guard/guard.h"
 
+using namespace globals;
+
 void Guard::leave()
-{
+{	
+	cpu.enable_int();
+	while(true)
+	{
+		cpu.disable_int();
+		Gate* current = (Gate*)queue.dequeue();
+		cpu.enable_int();
+
+		if(current == 0)
+			break;
+
+		current->epilogue();
+		current->queued(false);
+		
+	}
+	retne();
 
 }
 
 void Guard::relay(Gate* item)
 {
-
+	if(!item->queued())
+	{
+		queue.enqueue(item);
+		item->queued(true);
+	}
 }
+		

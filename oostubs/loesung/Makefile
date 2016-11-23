@@ -55,7 +55,7 @@ DEPDIR = ./dep
 DRIVE_FD = /dev/fd0
 # ACHTUNG: ein falsch angegebenes Laufwerk kann dazu fuehren, dass Daten auf dem
 # spezifizierten Laufwerk verloren gehen! Nicht mit root-Rechten ausfuehren!
-DRIVE_HD = /dev/sdz
+DRIVE_HD = null
 DELETE = rm
 ASM = nasm
 CC ?= gcc

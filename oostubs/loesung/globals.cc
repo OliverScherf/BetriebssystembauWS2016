@@ -7,3 +7,4 @@ Plugbox globals::plugbox;
 Panic globals::panic;
 PIC globals::pic;
 Keyboard globals::keyboard;
+Guard globals::guard;

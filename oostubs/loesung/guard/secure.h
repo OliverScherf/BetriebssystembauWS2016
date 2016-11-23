@@ -15,7 +15,7 @@
 #ifndef __Secure_include__
 #define __Secure_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "globals.h"
 
 class Secure
 {

@@ -26,23 +26,6 @@ void Keyboard::plugin()
   pic.allow(pic.keyboard);
 }
 
-void Keyboard::trigger()
-{
-    Key triggered_key = key_hit();
-    if (!triggered_key.valid()) // if key invalid
-      return;
-
-    if (triggered_key.ctrl())
-      if(triggered_key.alt())
-        if (triggered_key.scancode() == Key::scan::del)
-          reboot();
-
-    // TEST FOR PART B!
-    kout.setpos(20, 10);
-    kout << triggered_key;
-    kout.flush();
-}
-
 
 /* Mit dieser Methode wird auf die Unterbrechungen durch die Tastatur reagiert.
  * Da bei jedem Tastendruck mehrere Unterbrechungen ausgelöst werden,
@@ -54,12 +37,26 @@ void Keyboard::trigger()
  * Außerdem soll die Ausführung eines Epilogs angefordert werden. */
 bool Keyboard::prologue()
 {
-	return false;
+  triggered_key = key_hit();
+  return triggered_key.valid(); // if key invalid
 }
+
 
 /* Hier wird das im Rahmen der Prolog-Behandlung ausgelesene Zeichen auf
  * dem Bildschirm mit Hilfe des globalen CGA_Stream Objekts kout ausgegeben.*/
 void Keyboard::epilogue ()
 {
+  if (triggered_key.ctrl())
+    if(triggered_key.alt())
+      if (triggered_key.scancode() == Key::scan::del)
+        reboot();
 
+  kout.flush();
+  int x,y;
+  kout.getpos(x, y);
+
+  kout.setpos(20, 10);
+  kout << triggered_key;
+  kout.flush();
+  kout.setpos(x,y);
 }

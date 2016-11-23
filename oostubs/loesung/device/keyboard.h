@@ -18,17 +18,16 @@
 #include "globals.h"
 
 class Keyboard : public Gate, public Keyboard_Controller
-/* Hier muesst ihr selbst Code vervollstaendigen */
 {
 private:
       Keyboard (const Keyboard &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */
+      Key triggered_key;
 
 public:
       Keyboard();
       // PLUGIN: 'Anstoepseln' der Tastatur. Ab sofort werden Tasten erkannt.
       void plugin();
-      void trigger();
+      // void trigger();
 
       bool prologue();
       void epilogue();

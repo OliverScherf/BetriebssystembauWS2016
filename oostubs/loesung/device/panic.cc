@@ -15,13 +15,14 @@
 using namespace globals;
 using namespace cga_sm;
 
-void Panic::trigger()
-{
-	kout << "Error: Kernel Panic!" << endl;
-	cpu.halt();
-}
+// void Panic::trigger()
+// {
+	
+// }
 
 bool Panic::prologue()
 {
-
+	kout << "Error: Kernel Panic!" << endl;
+	cpu.halt();
+	return false;
 }

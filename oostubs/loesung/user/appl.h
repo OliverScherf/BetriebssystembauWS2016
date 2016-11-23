@@ -12,6 +12,7 @@
 #define __application_include__
 
 #include "device/cgastr.h"
+#include "guard/secure.h"
 
 class Application
 {

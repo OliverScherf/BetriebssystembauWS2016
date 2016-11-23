@@ -45,9 +45,9 @@ Chain* Queue::dequeue ()
     {
       head = item->next;   // Das erste Element aus der Liste ausklinken.
       if (!head)           // Wenn die Liste nun leer ist, muss der tail
-	tail = &head;      // Zeiger wieder auf den head verweisen.
+	      tail = &head;      // Zeiger wieder auf den head verweisen.
       else                 // sonst nur noch
-	item->next = 0;    // den Eintrag ueber den Nachfolger loeschen.
+	      item->next = 0;    // den Eintrag ueber den Nachfolger loeschen.
     }
    return item;
  }

@@ -1,1 +1,1 @@
-build/locker.o: guard/locker.cc guard/locker.h guard/guard.h
+build/locker.o: guard/locker.cc guard/locker.h

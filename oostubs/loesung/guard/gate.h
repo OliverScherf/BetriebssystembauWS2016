@@ -11,14 +11,16 @@
 #ifndef __Gate_include__
 #define __Gate_include__
 
+#include "object/chain.h"
+
 /* Hier muesst ihr selbst Code vervollstaendigen */
-class Gate
+class Gate : public Chain
 {
 private:
 	bool isQueued;
 
 public:
-	virtual void trigger() = 0;
+//	virtual void trigger() = 0;
 	virtual void epilogue() {};
 	virtual bool prologue() = 0;
 

@@ -25,8 +25,12 @@ Application::Application()
 
 void Application::action ()
  {
-/* Hier muesst ihr selbst Code vervollstaendigen */
-    kout.setpos(20, 20);
-    kout << "Application!!!";
-    kout.flush();
+ 	
+ 	while(true)
+  	{
+	  	Secure secure;
+	    kout.setpos(20, 20);
+	    kout << "Application!!!";
+	    kout.flush();
+	}
  }

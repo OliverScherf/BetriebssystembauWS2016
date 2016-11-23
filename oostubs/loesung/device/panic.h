@@ -23,7 +23,7 @@ private:
     Panic (const Panic &copy); // Verhindere Kopieren
 public:
     Panic () {}
-    void trigger();
+    // void trigger();
     bool prologue();
 /* Hier muesst ihr selbst Code vervollstaendigen */
 

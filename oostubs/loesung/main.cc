@@ -22,11 +22,7 @@ int main()
   kout << "Application: ";
   kout.flush();
 
-	while(true)
-  {
-    cpu.disable_int();
-    app.action();
-    cpu.enable_int();
-  }
-    return 0;
+	
+  app.action(); 
+  return 0;
  }
