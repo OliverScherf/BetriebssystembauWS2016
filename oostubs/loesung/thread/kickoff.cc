@@ -12,5 +12,9 @@
 /* Ruecksprungadresse interpretiert werden und der Rechner abstuerzen.       */
 /*****************************************************************************/
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- 
+#include "thread/coroutine.h"
+
+void kickoff (Coroutine* object)
+{
+
+}

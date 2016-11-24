@@ -11,16 +11,21 @@
 #ifndef __schedule_include__
 #define __schedule_include__
 
+#include "object/queue.h"
 #include "thread/dispatch.h"
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "thread/entrant.h"
         
-class Scheduler 
-/* Hier muesst ihr selbst Code vervollstaendigen */         
+class Scheduler : public Dispatcher
  {
 private:
-      Scheduler (const Scheduler &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- 
+	Scheduler(const Scheduler &copy); // Verhindere Kopieren
+	Queue readyList;
+public:
+	void ready(Entrant& that);
+	void schedule();
+	void exit();
+	void kill(Entrant& that);
+	void resume();
  };
 
 #endif

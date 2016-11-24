@@ -23,4 +23,19 @@ extern "C"
  {
 /* Hier muesst ihr selbst Code vervollstaendigen */       
  }
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+
+Coroutine::Coroutine(void* tos)
+{
+
+}
+
+void Coroutine::go()
+{
+
+}
+
+void Coroutine::resume(Coroutine& next)
+{
+
+}

@@ -8,7 +8,30 @@
 /* Implementierung des Schedulers.                                           */
 /*****************************************************************************/
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "thread/scheduler.h"
+
+void Scheduler::ready(Entrant& that)
+{
+
+}
+
+void Scheduler::schedule()
+{
+
+}
+
+void Scheduler::exit()
+{
+
+}
+
+void Scheduler::kill(Entrant& that)
+{
+
+}
+
+void Scheduler::resume()
+{
+
+}
+

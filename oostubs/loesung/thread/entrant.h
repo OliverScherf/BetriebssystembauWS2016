@@ -11,14 +11,15 @@
 #ifndef __entrant_include__
 #define __entrant_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
-        
-class Entrant 
-/* Hier muesst ihr selbst Code vervollstaendigen */         
+#include "thread/coroutine.h"
+#include "object/chain.h"
+
+class Entrant : public Chain, public Coroutine
  {
 private:
-      Entrant (const Entrant &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */          
+      Entrant (const Entrant &copy) {}; // Verhindere Kopieren
+public:
+      Entrant (void* tos) {};
  };
 
 #endif

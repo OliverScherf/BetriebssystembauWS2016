@@ -13,6 +13,7 @@
 
 #include "device/cgastr.h"
 #include "guard/secure.h"
+#include "thread/entrant.h"
 
 class Application
 {

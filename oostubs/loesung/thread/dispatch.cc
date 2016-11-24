@@ -13,3 +13,25 @@
 /*****************************************************************************/
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+#include "thread/dispatch.h"
+
+Dispatcher::Dispatcher()
+{
+
+}
+
+void Dispatcher::go(Coroutine& first)
+{
+
+}
+
+void Dispatcher::dispatch(Coroutine& next)
+{
+
+}
+
+Coroutine* Dispatcher::active()
+{
+
+}
