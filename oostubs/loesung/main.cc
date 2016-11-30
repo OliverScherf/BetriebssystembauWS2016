@@ -13,7 +13,7 @@ int main()
   Application app;
   kout << "Interrupt test!!!";
   kout.flush();
-	keyboard.plugin();
+  keyboard.plugin();
   //pic.allow(pic.timer); /* Handler not implemented, Kernel panic ;-) */
   kout.setpos(0, 10);
   kout << "Keyboard: ";
@@ -22,7 +22,7 @@ int main()
   kout << "Application: ";
   kout.flush();
 
-	
-  app.action(); 
+
+  app.action();
   return 0;
  }
