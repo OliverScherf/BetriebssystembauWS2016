@@ -15,7 +15,7 @@
 #ifndef __dispatch_include__
 #define __dispatch_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+/* Hier muesst ihr selbst Code vervollstaendigen */
 
 #include "thread/coroutine.h"
 
@@ -23,6 +23,7 @@ class Dispatcher
  {
 private:
       Dispatcher(const Dispatcher &copy); // Verhindere Kopieren
+      Coroutine* live;
 public:
       Dispatcher();
       void go(Coroutine& first);

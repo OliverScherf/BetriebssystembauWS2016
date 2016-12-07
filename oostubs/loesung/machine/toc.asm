@@ -26,14 +26,13 @@
 ; C Prototyp: void toc_go (struct toc* regs);
 
 toc_go:
-    mov eax, [esp+8]        ; *ebx    -> eax
-    mov ebx, [eax]          ; [*ebx]  -> ebx
-    mov esi, [eax+4]        ; [*esi]  -> esi
-    mov edi, [eax+8]        ; [*edi]  -> edi
-    mov ebp, [eax+12]       ; [*ebp]  -> ebp
-    mov esp, [eax+16]       ; [*esp]  -> esp
-
-
+    mov eax, [esp+4]
+    mov ebx, [eax + ebx_offset]           ; [regs.ebx]          -> ebx
+    mov esi, [eax + esi_offset]           ; [regs.esi]          -> esi
+    mov edi, [eax + edi_offset]           ; [regs.edi]          -> edi
+    mov ebp, [eax + ebp_offset]           ; [regs.ebp]          -> ebp
+    mov esp, [eax + esp_offset]           ; [regs.esp]          -> esp
+    ret
 
 ; Hier muesst ihr selbst Code vervollstaendigen
 
@@ -45,4 +44,18 @@ toc_go:
 ;                              struct toc* reg_then);
 
 toc_switch:
+    mov eax,                  [esp+4]       ; *regs_now           -> eax
+    mov [eax + ebx_offset],   ebx         ; current ebx         -> [regs_now.ebx]
+    mov [eax + esi_offset],   esi         ; current esi         -> [regs_now.esi]
+    mov [eax + edi_offset],   edi         ; current edi         -> [regs_now.edi]
+    mov [eax + ebp_offset],   ebp         ; current ebp         -> [regs_now.ebp]
+    mov [eax + esp_offset],   esp         ; current esp         -> [regs_now.esp]
+
+    mov eax, [esp+8]                      ; *regs_then          -> eax
+    mov ebx, [eax + ebx_offset]           ; [regs_now.ebx]      -> ebx
+    mov esi, [eax + esi_offset]           ; [regs_now.esi]      -> esi
+    mov edi, [eax + edi_offset]           ; [regs_now.edi]      -> edi
+    mov ebp, [eax + ebp_offset]           ; [regs_now.ebp]      -> ebp
+    mov esp, [eax + esp_offset]           ; [regs_now.esp]      -> esp
+    ret
 ; Hier muesst ihr selbst Code vervollstaendigen

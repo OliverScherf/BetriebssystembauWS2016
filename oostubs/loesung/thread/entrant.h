@@ -19,7 +19,7 @@ class Entrant : public Chain, public Coroutine
 private:
       Entrant (const Entrant &copy) {}; // Verhindere Kopieren
 public:
-      Entrant (void* tos) {};
+      Entrant (void* tos) : Coroutine(tos) {};
  };
 
 #endif

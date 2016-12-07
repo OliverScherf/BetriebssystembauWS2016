@@ -16,5 +16,5 @@
 
 void kickoff (Coroutine* object)
 {
-
+    object->action();
 }

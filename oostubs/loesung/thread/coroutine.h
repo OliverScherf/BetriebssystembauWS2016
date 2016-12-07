@@ -25,6 +25,7 @@ class Coroutine
  {
 private:
       Coroutine(const Coroutine &copy) {}; // Verhindere Kopieren
+      struct toc regs;
 protected:
 	  Coroutine(){}; // TODO: Added constructor to prevent weird compiler errors
 public:
