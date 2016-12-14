@@ -8,6 +8,7 @@
 #include "device/keyboard.h"
 #include "machine/pic.h"
 #include "guard/guard.h"
+#include "thread/scheduler.h"
 
 // forward declaration
 class Panic;
@@ -15,6 +16,7 @@ class Plugbox;
 class Keyboard;
 class PIC;
 class Guard;
+class Scheduler;
 
 namespace globals
 {
@@ -24,6 +26,7 @@ namespace globals
 	extern PIC pic;
 	extern Keyboard keyboard;
 	extern Guard guard;
+	extern Scheduler scheduler;
 }
 
 #endif

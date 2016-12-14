@@ -10,19 +10,24 @@ using namespace globals;
 
 int main()
 {
-  Application app;
-  kout << "Interrupt test!!!";
-  kout.flush();
+  // Application app;
+  // kout << "Interrupt test!!!";
+  // kout.flush();
   keyboard.plugin();
-  //pic.allow(pic.timer); /* Handler not implemented, Kernel panic ;-) */
-  kout.setpos(0, 10);
-  kout << "Keyboard: ";
-  kout.flush();
-  kout.setpos(0, 20);
-  kout << "Application: ";
-  kout.flush();
-
-
-  app.action();
+  // //pic.allow(pic.timer); /* Handler not implemented, Kernel panic ;-) */
+  // kout.setpos(0, 10);
+  // kout << "Keyboard: ";
+  // kout.flush();
+  // kout.setpos(0, 20);
+  // kout << "Application: ";
+  // kout.flush();
+  //cpu.disable_int();
+  void* tos = 0;
+  Application app(&tos);
+  kout << "App created" << endl;
+  scheduler.ready(app);
+  kout << "App ready" << endl;
+  scheduler.go(app);
+  //app.action();
   return 0;
  }

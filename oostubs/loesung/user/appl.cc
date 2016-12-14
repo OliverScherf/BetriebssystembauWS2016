@@ -18,14 +18,9 @@ using namespace cga_sm;
 
 /* Hier muesst ihr selbst Code vervollstaendigen */
 
-Application::Application()
-{
-
-}
-
 void Application::action ()
  {
- 	
+
  	while(true)
   	{
 	  	Secure secure;

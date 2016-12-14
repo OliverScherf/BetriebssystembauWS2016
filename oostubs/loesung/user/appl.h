@@ -15,13 +15,13 @@
 #include "guard/secure.h"
 #include "thread/entrant.h"
 
-class Application
+class Application : public Entrant
 {
 
 private:
     Application (const Application &copy); // Verhindere Kopieren
-
 public:
+    Application (void* tos) : Entrant(tos){}
     Application();
     void action ();
  };

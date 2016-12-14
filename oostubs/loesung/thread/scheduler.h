@@ -14,7 +14,7 @@
 #include "object/queue.h"
 #include "thread/dispatch.h"
 #include "thread/entrant.h"
-        
+
 class Scheduler : public Dispatcher
  {
 private:
@@ -26,6 +26,7 @@ public:
 	void exit();
 	void kill(Entrant& that);
 	void resume();
+    Scheduler(){}
  };
 
 #endif

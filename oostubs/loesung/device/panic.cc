@@ -17,7 +17,7 @@ using namespace cga_sm;
 
 // void Panic::trigger()
 // {
-	
+
 // }
 
 bool Panic::prologue()

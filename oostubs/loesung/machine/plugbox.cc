@@ -14,6 +14,8 @@
 
 #include "machine/plugbox.h"
 
+using namespace cga_sm;
+
 Plugbox::Plugbox()
 {
 	for (int i = 0; i < PLUGBOX_SIZE; ++i)
@@ -27,5 +29,6 @@ void Plugbox::assign(unsigned int slot, Gate& gate)
 
 Gate& Plugbox::report(unsigned int slot)
 {
+	kout << "Slot No: " << slot << endl;
 	return *gates[slot];
 }
