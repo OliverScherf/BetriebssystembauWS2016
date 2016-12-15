@@ -11,21 +11,27 @@
 /* INCLUDES */
 
 #include "user/appl.h"
+
 /* Hier muesst ihr selbst Code vervollstaendigen */
 
 using namespace cga_sm;
+using namespace globals;
 /* GLOBALE VARIABLEN */
 
 /* Hier muesst ihr selbst Code vervollstaendigen */
 
 void Application::action ()
  {
-
- 	while(true)
+	while(true)
   	{
-	  	Secure secure;
-	    kout.setpos(20, 20);
-	    kout << "Application!!!";
-	    kout.flush();
+  		{
+  			count++;
+  			Secure secure;
+		    kout.setpos(x, y);
+		    kout << "Application!!!" << count;
+		    for (int i = 0; i < 100000; ++i);
+		    kout.flush();
+  		}
+  		scheduler.resume();
 	}
  }

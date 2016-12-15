@@ -14,14 +14,18 @@
 #include "device/cgastr.h"
 #include "guard/secure.h"
 #include "thread/entrant.h"
+#include "globals.h"
 
 class Application : public Entrant
 {
 
 private:
     Application (const Application &copy); // Verhindere Kopieren
+    int x;
+    int y;
+    int count;
 public:
-    Application (void* tos) : Entrant(tos){}
+    Application (void* tos, int x, int y) : Entrant(tos), x(x), y(y) {count = 0;}
     Application();
     void action ();
  };

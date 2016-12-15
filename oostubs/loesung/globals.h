@@ -27,6 +27,7 @@ namespace globals
 	extern Keyboard keyboard;
 	extern Guard guard;
 	extern Scheduler scheduler;
+	
 }
 
 #endif

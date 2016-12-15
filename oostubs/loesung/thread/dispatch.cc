@@ -29,8 +29,10 @@ void Dispatcher::go(Coroutine& first)
 
 void Dispatcher::dispatch(Coroutine& next)
 {
-    live->resume(next);
-    live = &next;
+	Coroutine* old = live;
+	live = &next;
+    old->resume(next);
+    
 }
 
 Coroutine* Dispatcher::active()

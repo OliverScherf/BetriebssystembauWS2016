@@ -22,9 +22,11 @@
 void toc_settle (struct toc* regs, void* tos, void (*kickoff)(void*),
 		 void* object)
  {
-	 tos -= 4;
-	 (*(void**)tos) = object;
-	 tos -= 8;
-	 (*(void**)tos) = (void*)kickoff;
-	 regs->esp = tos;
+	tos -= 4;
+	(*(void**)tos) = object;
+	tos -= 8;
+	(*(void**)tos) = (void*)kickoff;
+
+	regs->esp = tos;
+	 
  }
