@@ -17,20 +17,25 @@ int main()
   char stack[STACK_SIZE];
 
   void* tos  = &stack + STACK_SIZE - 1;
-  void* tos2 = &stack + STACK_SIZE - 400;
-  void* tos3 = &stack + STACK_SIZE - 800; 
+  void* tos2 = &stack + STACK_SIZE - 33;
+  void* tos3 = &stack + STACK_SIZE - 65;
+  void* tos4 = &stack + STACK_SIZE - 97;
+  void* tos5 = &stack + STACK_SIZE - 129;
 
+  Application app(tos, 20, 4);
+  Application app2(tos2, 20, 5);
+  Application app3(tos3, 20, 6);
+  Application app4(tos4, 20, 7);
+  Application app5(tos5, 20, 8);
 
-  Application app(tos, 20, 20);
-  Application app2(tos2, 20, 21);
-  Application app3(tos3, 20, 22);
-  
 
   kout << "App created" << endl;
-  
-  scheduler.ready(app);  
+
+  scheduler.ready(app);
   scheduler.ready(app2);
-  //scheduler.ready(app3);
+  scheduler.ready(app3);
+  scheduler.ready(app4);
+  scheduler.ready(app5);
 
 
   kout << "App ready" << endl;
