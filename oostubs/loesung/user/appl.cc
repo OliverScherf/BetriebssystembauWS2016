@@ -25,11 +25,11 @@ void Application::action ()
 	while(true)
   	{
   		{
-  			count++;
+  			current_symbol = (current_symbol + 1)  % NUM_RUN_SYMBOLS;
   			Secure secure;
 		    kout.setpos(x, y);
-		    kout << "Application!!!" << count;
-		    for (int i = 0; i < 100000; ++i);
+		    kout << "Applicationat y : " << y << " is running: " <<
+                RUN_SYMBOLS[current_symbol];
 		    kout.flush();
   		}
   		scheduler.resume();

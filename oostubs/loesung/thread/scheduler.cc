@@ -21,7 +21,7 @@ void Scheduler::ready(Entrant& that)
 void Scheduler::schedule()
 {
   	Entrant* next = (Entrant*)readyList.dequeue();
-  	next->go();	
+  	go(*next);	
 }
 
 void Scheduler::exit()

@@ -18,22 +18,19 @@ int main()
 
   void* tos  = &stack + STACK_SIZE - 1;
   void* tos2 = &stack + STACK_SIZE - 400;
-  void* tos3 = &stack + STACK_SIZE - 800; 
+  void* tos3 = &stack + STACK_SIZE - 800;
 
 
   Application app(tos, 20, 20);
   Application app2(tos2, 20, 21);
   Application app3(tos3, 20, 22);
-  
 
-  kout << "App created" << endl;
-  
-  scheduler.ready(app);  
+  scheduler.ready(app);
   scheduler.ready(app2);
-  //scheduler.ready(app3);
+  scheduler.ready(app3);
 
 
-  kout << "App ready" << endl;
+  kout << "Apps ready" << endl;
   scheduler.schedule();
   //app.action();
   return 0;

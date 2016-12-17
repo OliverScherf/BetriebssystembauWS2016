@@ -23,9 +23,11 @@ private:
     Application (const Application &copy); // Verhindere Kopieren
     int x;
     int y;
-    int count;
+    int current_symbol;
 public:
-    Application (void* tos, int x, int y) : Entrant(tos), x(x), y(y) {count = 0;}
+    Application (void* tos, int x, int y) : Entrant(tos), x(x), y(y) { current_symbol = 0; }
+    const char* RUN_SYMBOLS = "-/*\\";
+    const int NUM_RUN_SYMBOLS = 4;
     Application();
     void action ();
  };
