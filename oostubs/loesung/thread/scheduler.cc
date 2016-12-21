@@ -10,9 +10,6 @@
 
 #include "thread/scheduler.h"
 
-using namespace cga_sm;
-using namespace globals;
-
 void Scheduler::ready(Entrant& that)
 {
     readyList.enqueue(&that);
@@ -21,13 +18,13 @@ void Scheduler::ready(Entrant& that)
 void Scheduler::schedule()
 {
   	Entrant* next = (Entrant*)readyList.dequeue();
-  	go(*next);	
+  	go(*next);
 }
 
 void Scheduler::exit()
 {
     Entrant* current = (Entrant*) readyList.dequeue();
-    current->action();
+    dispatch(*current);
 }
 
 void Scheduler::kill(Entrant& that)

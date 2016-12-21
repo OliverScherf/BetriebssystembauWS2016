@@ -7,16 +7,16 @@
 #include "device/panic.h"
 #include "device/keyboard.h"
 #include "machine/pic.h"
-#include "guard/guard.h"
-#include "thread/scheduler.h"
+#include "syscall/guarded_scheduler.h"
+#include "device/watch.h"
 
 // forward declaration
 class Panic;
 class Plugbox;
 class Keyboard;
 class PIC;
-class Guard;
-class Scheduler;
+class Guarded_Scheduler;
+class Watch;
 
 namespace globals
 {
@@ -25,8 +25,8 @@ namespace globals
 	extern Panic panic;
 	extern PIC pic;
 	extern Keyboard keyboard;
-	extern Guard guard;
-	extern Scheduler scheduler;
+	extern Guarded_Scheduler scheduler;
+	extern Watch cpu_watch;
 	
 }
 

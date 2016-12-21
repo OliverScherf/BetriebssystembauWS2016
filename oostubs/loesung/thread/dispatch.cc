@@ -24,6 +24,7 @@ Dispatcher::Dispatcher()
 void Dispatcher::go(Coroutine& first)
 {
     live = &first;
+    //guard->leave();
     live->go();
 }
 

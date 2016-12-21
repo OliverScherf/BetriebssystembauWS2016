@@ -14,6 +14,7 @@
 
 #include "guard/gate.h"
 #include "machine/pit.h"
+#include "globals.h"
 
 class Watch : public Gate, public PIT
  {
@@ -21,8 +22,7 @@ private:
     Watch (const Watch &copy); // Verhindere Kopieren
 public:
     // WATCH: Initialisiert die Uhr.
-    Watch (int us) : PIT (us)
-    {}
+    Watch (int us) : PIT (us) {}
 
     // WINDUP: "zieht die Uhr auf". Danach laeuft sie los und loest in
     //         regelmaessigen Abstaenden Unterbrechungen aus.

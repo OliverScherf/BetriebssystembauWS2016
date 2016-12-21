@@ -20,18 +20,16 @@ using namespace globals;
 
 /* Hier muesst ihr selbst Code vervollstaendigen */
 
-void Application::action ()
- {
-	while(true)
-  	{
-  		{
-  			current_symbol = (current_symbol + 1)  % NUM_RUN_SYMBOLS;
-  			Secure secure;
-		    kout.setpos(x, y);
-		    kout << "Applicationat y : " << y << " is running: " <<
-                RUN_SYMBOLS[current_symbol];
-		    kout.flush();
-  		}
-  		scheduler.resume();
+void Application::action() {
+	while (true)
+	{
+		current_symbol = (current_symbol + 1) % NUM_RUN_SYMBOLS;
+		{
+			Secure secure;
+			kout.setpos(x, y);
+			kout << "Applicationat y : " << y << " is running: "
+					<< RUN_SYMBOLS[current_symbol];
+			kout.flush();
+		}
 	}
- }
+}

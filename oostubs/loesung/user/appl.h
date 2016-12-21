@@ -13,10 +13,10 @@
 
 #include "device/cgastr.h"
 #include "guard/secure.h"
-#include "thread/entrant.h"
+#include "syscall/thread.h"
 #include "globals.h"
 
-class Application : public Entrant
+class Application : public Thread
 {
 
 private:
@@ -25,7 +25,7 @@ private:
     int y;
     int current_symbol;
 public:
-    Application (void* tos, int x, int y) : Entrant(tos), x(x), y(y) { current_symbol = 0; }
+    Application (void* tos, int x, int y) : Thread(tos), x(x), y(y) { current_symbol = 0; }
     const char* RUN_SYMBOLS = "-/*\\";
     const int NUM_RUN_SYMBOLS = 4;
     Application();

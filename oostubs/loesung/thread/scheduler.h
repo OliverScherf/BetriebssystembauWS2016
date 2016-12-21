@@ -14,7 +14,7 @@
 #include "object/queue.h"
 #include "thread/dispatch.h"
 #include "thread/entrant.h"
-#include "globals.h"
+#include "guard/guard.h"
 
 class Scheduler : public Dispatcher
  {

@@ -7,5 +7,5 @@ Plugbox globals::plugbox;
 Panic globals::panic;
 PIC globals::pic;
 Keyboard globals::keyboard;
-Guard globals::guard;
-Scheduler globals::scheduler;
+Guarded_Scheduler globals::scheduler;
+Watch globals::cpu_watch(1000000);

@@ -10,9 +10,10 @@ using namespace globals;
 
 int main()
 {
-
+  guard.enter();
   keyboard.plugin();
-  // //pic.allow(pic.timer); /* Handler not implemented, Kernel panic ;-) */
+
+  // pic.allow(pic.timer); /* Handler not implemented, Kernel panic ;-) */
   const int STACK_SIZE = 1024;
   char stack[STACK_SIZE];
 
@@ -31,7 +32,9 @@ int main()
 
 
   kout << "Apps ready" << endl;
-  scheduler.schedule();
-  //app.action();
+
+  cpu_watch.windup();
+  scheduler.schedule(&guard);
+
   return 0;
  }

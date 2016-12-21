@@ -29,5 +29,6 @@ void Plugbox::assign(unsigned int slot, Gate& gate)
 
 Gate& Plugbox::report(unsigned int slot)
 {
+	kout << slot << endl;
 	return *gates[slot];
 }
