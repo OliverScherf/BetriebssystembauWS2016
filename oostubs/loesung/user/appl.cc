@@ -12,13 +12,8 @@
 
 #include "user/appl.h"
 
-/* Hier muesst ihr selbst Code vervollstaendigen */
-
 using namespace cga_sm;
-using namespace globals;
 /* GLOBALE VARIABLEN */
-
-/* Hier muesst ihr selbst Code vervollstaendigen */
 
 void Application::action() {
 	while (true)
