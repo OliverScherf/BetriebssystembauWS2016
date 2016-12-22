@@ -15,7 +15,9 @@
 #ifndef __Secure_include__
 #define __Secure_include__
 
-#include "globals.h"
+#include "guard/guard.h"
+
+extern Guard guard;
 
 class Secure
 {

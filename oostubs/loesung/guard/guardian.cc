@@ -22,6 +22,8 @@ using namespace globals;
 
 extern "C" void guardian (unsigned int slot);
 
+extern Guard guard;
+
 /* GUARDIAN: Low-Level Interrupt-Behandlung. Die Funktion wird spaeter noch */
 /*           erweitert.                                                     */
 

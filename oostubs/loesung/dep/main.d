@@ -6,4 +6,4 @@ build/main.o: main.cc globals.h machine/cpu.h device/cgastr.h \
  syscall/guarded_scheduler.h thread/scheduler.h object/queue.h \
  thread/dispatch.h thread/coroutine.h machine/toc.h thread/entrant.h \
  guard/guard.h guard/locker.h guard/secure.h syscall/thread.h \
- device/watch.h machine/pit.h user/appl.h
+ device/watch.h machine/pit.h user/appl.h guard/guard.h

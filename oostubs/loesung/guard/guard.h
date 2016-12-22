@@ -17,7 +17,6 @@
 #include "object/queue.h"
 #include "guard/locker.h"
 #include "guard/gate.h"
-#include "guard/secure.h"
 #include "globals.h"
 
 
