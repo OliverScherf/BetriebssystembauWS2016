@@ -14,11 +14,13 @@
 #include "device/cgastr.h"
 #include "guard/secure.h"
 #include "syscall/thread.h"
-#include "globals.h"
+
+using namespace cga_sm;
+
+//extern CGA_Stream kout;
 
 class Application : public Thread
 {
-
 private:
     Application (const Application &copy); // Verhindere Kopieren
     int x;

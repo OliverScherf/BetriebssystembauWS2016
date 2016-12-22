@@ -14,7 +14,9 @@
 /* INCLUDES */
 #include "guard/gate.h"
 #include "device/cgastr.h"
-#include "globals.h"
+#include "machine/cpu.h"
+
+extern CPU cpu;
 
 class Panic : public Gate
 /* Hier muesst ihr selbst Code vervollstaendigen */

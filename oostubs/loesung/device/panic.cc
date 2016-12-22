@@ -12,7 +12,6 @@
 
 #include "device/panic.h"
 
-using namespace globals;
 using namespace cga_sm;
 
 // void Panic::trigger()

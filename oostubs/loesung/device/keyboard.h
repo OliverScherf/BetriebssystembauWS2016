@@ -15,7 +15,11 @@
 #include "guard/gate.h"
 #include "machine/key.h"
 #include "device/cgastr.h"
-#include "globals.h"
+#include "machine/plugbox.h"
+#include "machine/pic.h"
+
+extern Plugbox plugbox;
+extern PIC pic;
 
 class Keyboard : public Gate, public Keyboard_Controller
 {

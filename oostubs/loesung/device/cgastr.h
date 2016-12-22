@@ -17,7 +17,7 @@
 #include "object/o_stream.h"
 #include "machine/cgascr.h"
 
-namespace cga_sm 
+namespace cga_sm
 {
 	class CGA_Stream : public O_Stream, public CGA_Screen
 	{

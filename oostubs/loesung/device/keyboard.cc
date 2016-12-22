@@ -12,7 +12,6 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */
 #include "device/keyboard.h"
 
-using namespace globals;
 using namespace cga_sm;
 
 Keyboard::Keyboard()

@@ -14,11 +14,6 @@
 /* kann mit Hilfe der Klasse CPU festgelegt werden.                          */
 /*****************************************************************************/
 
-/* Hier muesst ihr selbst Code vervollstaendigen */
-
-#include "machine/pic.h"
-
-
 /** ACCESS PORTS ON PIC!
 * Port 0x21 / 0xa1 ->     interrupt mask register (IRM) -> suppresses
 *                         selective Interrupts
@@ -40,7 +35,7 @@
 *                             afterwards.
 **/
 
-using namespace globals;
+#include "machine/pic.h"
 
 PIC::PIC() : imr_low(0x21) , imr_high(0xa1)
 {

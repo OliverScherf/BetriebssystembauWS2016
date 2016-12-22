@@ -14,7 +14,13 @@
 
 #include "guard/gate.h"
 #include "machine/pit.h"
-#include "globals.h"
+#include "machine/plugbox.h"
+#include "syscall/guarded_scheduler.h"
+#include "machine/pic.h"
+
+extern Plugbox plugbox;
+extern Guarded_Scheduler scheduler;
+extern PIC pic;
 
 class Watch : public Gate, public PIT
  {

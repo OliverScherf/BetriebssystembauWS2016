@@ -14,15 +14,15 @@
 /* FUNKTIONEN */
 #include "device/cgastr.h"
 #include "machine/keyctrl.h"
-#include "globals.h"
 #include "guard/secure.h"
+#include "machine/plugbox.h"
 
 using namespace cga_sm;
-using namespace globals;
 
 extern "C" void guardian (unsigned int slot);
 
 extern Guard guard;
+extern Plugbox plugbox;
 
 /* GUARDIAN: Low-Level Interrupt-Behandlung. Die Funktion wird spaeter noch */
 /*           erweitert.                                                     */

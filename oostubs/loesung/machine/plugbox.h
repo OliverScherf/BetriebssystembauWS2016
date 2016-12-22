@@ -15,7 +15,9 @@
 
 #include "guard/gate.h"
 #include "device/cgastr.h"
-#include "globals.h"
+#include "device/panic.h"
+
+extern Panic panic;
 
 class Plugbox
  {

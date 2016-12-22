@@ -18,8 +18,10 @@
 #define __pic_include__
 
 #include "machine/io_port.h"
-#include "globals.h"
 #include "device/cgastr.h"
+#include "machine/cpu.h"
+
+extern CPU cpu;
 
 class PIC
 {

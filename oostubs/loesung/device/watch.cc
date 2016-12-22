@@ -9,8 +9,6 @@
 
 #include "device/watch.h"
 
-using namespace globals;
-
 // WINDUP: "zieht die Uhr auf". Danach laeuft sie los und loest in
 //         regelmaessigen Abstaenden Unterbrechungen aus.
 void Watch::windup()

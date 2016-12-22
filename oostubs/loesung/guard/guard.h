@@ -17,8 +17,9 @@
 #include "object/queue.h"
 #include "guard/locker.h"
 #include "guard/gate.h"
-#include "globals.h"
+#include "machine/cpu.h"
 
+extern CPU cpu;
 
 class Guard : public Locker
  {

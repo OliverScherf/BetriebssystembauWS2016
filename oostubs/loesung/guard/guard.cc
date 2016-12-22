@@ -14,10 +14,8 @@
 
 #include "guard/guard.h"
 
-using namespace globals;
-
 void Guard::leave()
-{	
+{
 	cpu.enable_int();
 	while(true)
 	{
@@ -30,7 +28,7 @@ void Guard::leave()
 
 		current->epilogue();
 		current->queued(false);
-		
+
 	}
 	retne();
 
@@ -44,4 +42,3 @@ void Guard::relay(Gate* item)
 		item->queued(true);
 	}
 }
-		
