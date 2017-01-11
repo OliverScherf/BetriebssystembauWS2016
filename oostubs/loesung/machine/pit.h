@@ -12,6 +12,7 @@
 #define __pit_include__
 
 #include "io_port.h"
+#include "device/cgastr.h"
 
 class PIT
  {
@@ -21,7 +22,7 @@ private:
     IO_Port pit1_ctrl;
     IO_Port pit1_count0;
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+/* Hier muesst ihr selbst Code vervollstaendigen */
 public:
     PIT (int us);
     int interval ();
