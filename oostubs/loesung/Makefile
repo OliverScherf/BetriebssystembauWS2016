@@ -71,6 +71,7 @@ BOOTDEVICE = 0:80:2:18:0:0:1
 
 BOCHSSTARTSCRIPTDIR = ../../provided_resources/bsb-home/bochs
 QEMUBINDIR = /home/bsb/qemu/qemu/bin
+VBOXNAME= "Live Test"
 
 # -------------------------------------------------------------------------
 # Namen der Unterverzeichnisse mit den Quelltexten
@@ -165,6 +166,7 @@ $(OBJDIR)/bootdisk-hd.vmi:  $(OBJDIR)/bootdisk.img
 	dd if=$< of=$@ bs=$$((2016*512)) conv=sync
 
 $(OBJDIR)/bootdisk.vdi:   $(OBJDIR)/bootdisk.vmi
+	rm -f $@
 	VBoxManage convertdd $< $@	
 
 # --------------------------------------------------------------------------
@@ -235,8 +237,12 @@ qemu-gdb: $(OBJDIR)/bootdisk.vmi
 
 
 # --------------------------------------------------------------------------
-# Virtualbox image umwandeln
+# Virtualbox image umwandeln und VBox starten.
 virtualbox: $(OBJDIR)/bootdisk.vdi
+	vboxmanage storageattach "Live Test" --storagectl "SATA" --port 0 --device 0 --medium none
+	vboxmanage closemedium build/bootdisk.vdi 
+	vboxmanage storageattach "Live Test" --storagectl "SATA" --port 0 --device 0 --type hdd --medium build/bootdisk.vdi
+	vboxmanage startvm $(VBOXNAME)
 
 # --------------------------------------------------------------------------
 # 'gdb' startet den GDB-Debugger und verbindet sich mit dem GDB-Stub des vorher
