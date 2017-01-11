@@ -94,7 +94,7 @@ OBJPRE = $(addprefix $(OBJDIR)/,$(ASM_OBJECTS) $(C_OBJECTS) $(CC_OBJECTS))
 # Default targets (einfaches Image, Image fuer USB Sticks, Image fuer VMWare
 # und Boot CDs)
 
-all: $(OBJDIR)/bootdisk.img $(OBJDIR)/bootdisk.vmi $(OBJDIR)/bootdisk-hd.vmi
+all: $(OBJDIR)/bootdisk.img $(OBJDIR)/bootdisk.vmi $(OBJDIR)/bootdisk-hd.vmi $(OBJDIR)/bootdisk.vdi
 
 # --------------------------------------------------------------------------
 # Regeln zur Erzeugung der Abhaengigkeitsdateien
@@ -164,6 +164,9 @@ $(OBJDIR)/bootdisk.vmi:  $(OBJDIR)/bootdisk.img
 $(OBJDIR)/bootdisk-hd.vmi:  $(OBJDIR)/bootdisk.img
 	dd if=$< of=$@ bs=$$((2016*512)) conv=sync
 
+$(OBJDIR)/bootdisk.vdi:   $(OBJDIR)/bootdisk.vmi
+	VBoxManage convertdd $< $@	
+
 # --------------------------------------------------------------------------
 # 'clean' loescht das generierte System, die Objektdateien und die
 # Abhaengigkeitsdateien
@@ -229,6 +232,11 @@ qemu-gdb: $(OBJDIR)/bootdisk.vmi
 	$(VERBOSE) echo "target remote localhost:$$PPID" >> /tmp/gdbcommands.$(shell id -u)
 	$(VERBOSE) echo "continue" >> /tmp/gdbcommands.$(shell id -u)
 	$(QEMUBINDIR)/qemu -fda $(OBJDIR)/bootdisk.vmi -boot a -k en-us -s -S -p $$PPID
+
+
+# --------------------------------------------------------------------------
+# Virtualbox image umwandeln
+virtualbox: $(OBJDIR)/bootdisk.vdi
 
 # --------------------------------------------------------------------------
 # 'gdb' startet den GDB-Debugger und verbindet sich mit dem GDB-Stub des vorher
