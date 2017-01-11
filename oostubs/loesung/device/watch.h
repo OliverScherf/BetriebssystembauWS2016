@@ -17,10 +17,12 @@
 #include "machine/plugbox.h"
 #include "syscall/guarded_scheduler.h"
 #include "machine/pic.h"
+#include "device/cgastr.h"
 
 extern Plugbox plugbox;
 extern Guarded_Scheduler scheduler;
 extern PIC pic;
+extern cga_sm::CGA_Stream cga_sm::kout;
 
 class Watch : public Gate, public PIT
  {

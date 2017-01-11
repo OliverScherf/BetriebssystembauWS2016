@@ -14,7 +14,12 @@
 #include "object/queue.h"
 #include "thread/dispatch.h"
 #include "thread/entrant.h"
-//#include "guard/guard.h"
+#include "guard/guard.h"
+#include "device/cgastr.h"
+
+extern Guard guard;
+extern cga_sm::CGA_Stream cga_sm::kout;
+
 
 class Scheduler : public Dispatcher
  {

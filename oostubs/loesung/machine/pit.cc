@@ -22,9 +22,7 @@ void PIT::interval(int us)
 	inter = us;
 	pit1_ctrl.outb(0b00101100);
 	kout << "Before timer" << endl;
-	float interval_f = us / 0.838f;
-	kout << "After float" << endl;
-	unsigned int interval = interval_f;
+	unsigned int interval = us * 1000 / 838; //0.838
 	kout << "After timer" << interval << endl;
 	int highByte = (interval >> 8) & 0xFF;
 	int lowByte  = interval & 0xFF;
