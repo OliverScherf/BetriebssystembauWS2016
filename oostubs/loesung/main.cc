@@ -19,7 +19,7 @@ Panic panic;
 PIC pic;
 Keyboard keyboard;
 Guarded_Scheduler scheduler;
-Watch cpu_watch(15000); //max: 53000
+Watch cpu_watch(1500); //max: 53000
 Guard guard;
 
 int main()
@@ -33,9 +33,9 @@ int main()
     void* tos2 = &stack + STACK_SIZE - 400;
     void* tos3 = &stack + STACK_SIZE - 800;
 
-    Application app(tos, 20, 20);
-    Application app2(tos2, 20, 21);
-    Application app3(tos3, 20, 22);
+    Application app(tos, 5, 20);
+    Application app2(tos2, 5, 21);
+    Application app3(tos3, 5, 22);
 
     scheduler.ready(app);
     scheduler.ready(app2);
@@ -45,7 +45,7 @@ int main()
 
 
     kout << "Apps ready" << endl;
-    kout << guard.avail() << endl;
+
     cpu_watch.windup();
     kout << "Watch was winded up" << endl;
     scheduler.schedule();

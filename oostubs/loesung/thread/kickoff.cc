@@ -12,9 +12,12 @@
 /* Ruecksprungadresse interpretiert werden und der Rechner abstuerzen.       */
 /*****************************************************************************/
 
+#include "thread/kickoff.h"
 #include "thread/coroutine.h"
 
 void kickoff (Coroutine* object)
 {
+    cga_sm::kout << "kickoff()" << cga_sm::endl;
+    guard.leave();
     object->action();
 }

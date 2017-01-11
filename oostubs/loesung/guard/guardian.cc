@@ -37,8 +37,10 @@ void guardian (unsigned int slot)
 	{
   		if(guard.avail())
   		{
+			guard.enter();
 	  		cpu.enable_int();
 	  		gate.epilogue();
+			guard.leave();
   		}
   		else
 	  		guard.relay(&plugbox.report(slot));

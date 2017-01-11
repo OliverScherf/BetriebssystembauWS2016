@@ -21,8 +21,9 @@ void Application::action() {
 		current_symbol = (current_symbol + 1) % NUM_RUN_SYMBOLS;
 		{
 			Secure secure;
+			//guard.enter()
 			kout.setpos(x, y);
-			kout << "Applicationat y : " << y << " is running: "
+			kout << "Application at y : " << y << " is running: "
 					<< RUN_SYMBOLS[current_symbol];
 			kout.flush();
 		}

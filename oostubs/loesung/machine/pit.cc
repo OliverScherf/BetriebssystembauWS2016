@@ -20,7 +20,7 @@ int PIT::interval()
 void PIT::interval(int us)
 {
 	inter = us;
-	pit1_ctrl.outb(0b00101100);
+	pit1_ctrl.outb(0b00110100);
 	kout << "Before timer" << endl;
 	unsigned int interval = us * 1000 / 838; //0.838
 	kout << "After timer" << interval << endl;

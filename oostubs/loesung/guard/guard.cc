@@ -21,16 +21,17 @@ void Guard::leave()
 	{
 		cpu.disable_int();
 		Gate* current = (Gate*)queue.dequeue();
-		cpu.enable_int();
 
 		if(current == 0)
 			break;
 
+		cpu.enable_int();
 		current->epilogue();
 		current->queued(false);
 
 	}
 	retne();
+	cpu.enable_int();
 
 }
 

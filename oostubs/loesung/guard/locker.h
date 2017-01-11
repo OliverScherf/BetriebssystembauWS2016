@@ -15,6 +15,12 @@
 #ifndef __Locker_include__
 #define __Locker_include__
 
+#include "machine/cpu.h"
+#include "device/cgastr.h"
+
+extern CPU cpu;
+extern cga_sm::CGA_Stream cga_sm::kout;
+
 class Locker
 {
 private:
@@ -22,8 +28,27 @@ private:
 	volatile bool locked;
 public:
 	Locker () { locked = false; }
-	inline void enter(){ locked = true; }
-	inline void retne(){ locked = false; }
+	inline void enter()
+	{
+		//cga_sm::kout << "enter()" << cga_sm::endl;
+		if(locked)
+		{
+			cga_sm::kout << "Enter error" << cga_sm::endl;
+			cpu.halt();
+		}
+		locked = true;
+
+	}
+	inline void retne()
+	{
+		//cga_sm::kout << "retne()" << cga_sm::endl;
+		if(!locked)
+		{
+			cga_sm::kout << "retne error" << cga_sm::endl;
+			cpu.halt();
+		}
+		locked = false;
+	}
 	inline bool avail(){ return !locked; }
 
 };

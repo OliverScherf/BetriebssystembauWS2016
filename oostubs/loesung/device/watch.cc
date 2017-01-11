@@ -27,5 +27,5 @@ bool Watch::prologue()
 void Watch::epilogue()
 {
 	cga_sm::kout << "scheduler.resume()" << cga_sm::endl;
-	scheduler.resume();
+	scheduler.Scheduler::resume();
 }

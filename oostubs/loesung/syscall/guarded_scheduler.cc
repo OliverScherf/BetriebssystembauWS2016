@@ -30,6 +30,6 @@ void Guarded_Scheduler::kill(Thread& that)
 
 void Guarded_Scheduler::resume()
 {
-	Secure sec;
+	Secure secure;
 	Scheduler::resume();
 }
