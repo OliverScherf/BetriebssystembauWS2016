@@ -26,11 +26,15 @@ class Locker
 private:
 	Locker(const Locker &copy); // Verhindere Kopieren
 	volatile bool locked;
+	int enterc;
+	int retnec;
 public:
-	Locker () { locked = false; }
+	Locker () { locked = false; enterc = 0; retnec = 0;}
 	inline void enter()
 	{
-		//cga_sm::kout << "enter()" << cga_sm::endl;
+		// enterc++;
+		// cga_sm::kout.setpos(50,10);
+		// cga_sm::kout << "e: " << enterc << cga_sm::endl;
 		if(locked)
 		{
 			cga_sm::kout << "Enter error" << cga_sm::endl;
@@ -41,7 +45,9 @@ public:
 	}
 	inline void retne()
 	{
-		//cga_sm::kout << "retne()" << cga_sm::endl;
+		// retnec++;
+		// cga_sm::kout.setpos(50,11);
+		// cga_sm::kout << "r: " << retnec << cga_sm::endl;
 		if(!locked)
 		{
 			cga_sm::kout << "retne error" << cga_sm::endl;

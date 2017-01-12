@@ -17,7 +17,6 @@
 
 void kickoff (Coroutine* object)
 {
-    cga_sm::kout << "kickoff()" << cga_sm::endl;
     guard.leave();
     object->action();
 }

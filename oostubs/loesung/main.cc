@@ -42,12 +42,12 @@ int main()
     scheduler.ready(app3);
 
     guard.enter();
+    cpu.enable_int();
 
-
-    kout << "Apps ready" << endl;
+    //kout << "Apps ready" << endl;
 
     cpu_watch.windup();
-    kout << "Watch was winded up" << endl;
+    //kout << "Watch was winded up" << endl;
     scheduler.schedule();
 
     return 0;
