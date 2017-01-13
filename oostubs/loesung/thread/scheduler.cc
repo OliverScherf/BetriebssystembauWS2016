@@ -18,7 +18,6 @@ void Scheduler::ready(Entrant& that)
 void Scheduler::schedule()
 {
   	Entrant* next = (Entrant*)readyList.dequeue();
-    cga_sm::kout << "schedule()" << cga_sm::endl;
   	go(*next);
 }
 

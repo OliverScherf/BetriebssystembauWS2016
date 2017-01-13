@@ -16,7 +16,6 @@
 
 void Guard::leave()
 {
-	cpu.enable_int();
 	while(true)
 	{
 		cpu.disable_int();
@@ -25,10 +24,9 @@ void Guard::leave()
 		if(current == 0)
 			break;
 
+		current->queued(false);
 		cpu.enable_int();
 		current->epilogue();
-		current->queued(false);
-
 	}
 	retne();
 	cpu.enable_int();
@@ -37,8 +35,16 @@ void Guard::leave()
 
 void Guard::relay(Gate* item)
 {
-	if(!item->queued())
+	// int x,y;
+    // cga_sm::kout.getpos(x, y);
+	// cga_sm::kout.setpos(1,1);
+	// cga_sm::kout << item->queued() << cga_sm::endl;
+	// cga_sm::kout.setpos(x,y);
+	if(!(item->queued()))
 	{
+		// queued++;
+		// cga_sm::kout.setpos(40,10);
+		// cga_sm::kout << "enqueued, count: " << queued << cga_sm::endl;
 		queue.enqueue(item);
 		item->queued(true);
 	}

@@ -12,7 +12,7 @@
 #define __pit_include__
 
 #include "io_port.h"
-#include "device/cgastr.h"
+
 
 class PIT
  {

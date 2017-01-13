@@ -26,6 +26,5 @@ bool Watch::prologue()
 // EPILOGUE: Epilogue der Uhrenunterbrechung
 void Watch::epilogue()
 {
-	//cga_sm::kout << "scheduler.resume()" << cga_sm::endl;
 	scheduler.Scheduler::resume();
 }

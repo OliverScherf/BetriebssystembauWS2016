@@ -26,8 +26,11 @@ private:
     int x;
     int y;
     int current_symbol;
+    static const int STACK_SIZE = 1024;
+    char stack[STACK_SIZE];
+    int count;
 public:
-    Application (void* tos, int x, int y) : Thread(tos), x(x), y(y) { current_symbol = 0; }
+    Application (int x, int y) : Thread(&stack + STACK_SIZE - 1), x(x), y(y) { current_symbol = 0; count = 0;}
     const char* RUN_SYMBOLS = "-/*\\";
     const int NUM_RUN_SYMBOLS = 4;
     Application();

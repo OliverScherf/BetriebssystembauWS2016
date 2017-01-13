@@ -19,35 +19,25 @@ Panic panic;
 PIC pic;
 Keyboard keyboard;
 Guarded_Scheduler scheduler;
-Watch cpu_watch(1500); //max: 53000
+Watch cpu_watch(1000); //max: 53000
 Guard guard;
 
 int main()
 {
     keyboard.plugin();
 
-    const int STACK_SIZE = 1024;
-    char stack[STACK_SIZE];
-
-    void* tos  = &stack + STACK_SIZE - 1;
-    void* tos2 = &stack + STACK_SIZE - 400;
-    void* tos3 = &stack + STACK_SIZE - 800;
-
-    Application app(tos, 5, 20);
-    Application app2(tos2, 5, 21);
-    Application app3(tos3, 5, 22);
+    Application app(5, 20);
+    Application app2(5, 21);
+    Application app3(5, 22);
 
     scheduler.ready(app);
     scheduler.ready(app2);
     scheduler.ready(app3);
 
     guard.enter();
-    cpu.enable_int();
-
-    //kout << "Apps ready" << endl;
 
     cpu_watch.windup();
-    //kout << "Watch was winded up" << endl;
+    cpu.enable_int();
     scheduler.schedule();
 
     return 0;

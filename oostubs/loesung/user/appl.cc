@@ -21,9 +21,10 @@ void Application::action() {
 		current_symbol = (current_symbol + 1) % NUM_RUN_SYMBOLS;
 		{
 			Secure secure;
+			count++;
 			kout.setpos(x, y);
 			kout << "Application at y : " << y << " is running: "
-					<< RUN_SYMBOLS[current_symbol] << endl;;
+					<< RUN_SYMBOLS[current_symbol] << "; Count: " << count << endl;
 			kout.flush();
 		}
 	}

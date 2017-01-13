@@ -14,10 +14,11 @@
 #define __Plugbox_include__
 
 #include "guard/gate.h"
-#include "device/cgastr.h"
+#include "guard/guard.h"
 #include "device/panic.h"
 
 extern Panic panic;
+extern Guard guard;
 
 class Plugbox
  {

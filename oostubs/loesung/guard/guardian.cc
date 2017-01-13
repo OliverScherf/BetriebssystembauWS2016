@@ -29,9 +29,6 @@ extern Plugbox plugbox;
 
 void guardian (unsigned int slot)
 {
-	// Secure object disables interrupts in constructor
-	// after scope is left destructor of secure enables
-	// interrupts again
 	Gate& gate = plugbox.report(slot);
   	if(gate.prologue())
 	{
