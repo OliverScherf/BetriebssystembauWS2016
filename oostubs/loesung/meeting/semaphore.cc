@@ -2,25 +2,45 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                             T H R E A D                                   */
+/*                           S E M A P H O R E                               */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Benutzerschnittstelle eines Threads.                                      */
+/* Semaphore werden zur Synchronisation von Threads verwendet.               */
 /*****************************************************************************/
-
-#ifndef __thread_include__
-#define __thread_include__
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 
-#include "thread/customer.h"
+#include "meeting/semaphore.h"
 
-class Thread : public Customer
- {
-private:
-      Thread (const Thread &copy); // Verhindere Kopieren
-public:
-      Thread(void* tos) : Customer(tos) {}
- };
 
-#endif
+void Semaphore::p()
+{
+	if (counter > 0)
+	{
+		counter--;
+		return;
+	}
+	scheduler.block(*((Customer*) scheduler.active()), *this);
+	counter--;
+}
+
+void Semaphore::v()
+{
+	// man kann ja v() vor p() aufrufen (ist zwar dumm aber kann ein user machen)
+	if (counter >= max_counter)
+	{
+		return;
+	}
+	counter++;
+	scheduler.wakeup(*((Customer*) dequeue()));
+}
+
+void Semaphore::wait()
+{
+	p();
+}
+
+void Semaphore::signal()
+{
+	v();
+}

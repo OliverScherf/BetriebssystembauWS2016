@@ -6,7 +6,7 @@
 #include "device/panic.h"
 #include "device/keyboard.h"
 #include "machine/pic.h"
-#include "syscall/guarded_scheduler.h"
+#include "syscall/guarded_organizer.h"
 #include "device/watch.h"
 #include "guard/guard.h"
 
@@ -18,7 +18,7 @@ Plugbox plugbox;
 Panic panic;
 PIC pic;
 Keyboard keyboard;
-Guarded_Scheduler scheduler;
+Guarded_Organizer scheduler;
 Watch cpu_watch(1000); //max: 53000
 Guard guard;
 

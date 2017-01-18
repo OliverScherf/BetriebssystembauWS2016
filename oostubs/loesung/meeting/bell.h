@@ -2,25 +2,29 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                             T H R E A D                                   */
+/*                                 B E L L                                   */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Benutzerschnittstelle eines Threads.                                      */
+/* Eine "Glocke" ist eine abstrakte Basisklasse, die das Ausloesen einer     */
+/* Aktivitaet nach einer bestimmten Wartezeit erlaubt.                       */
+/* Dazu besitzt sie einen Zaehler, der vom "Gloeckner" (Bellringer) ver-     */
+/* waltet wird.                                                              */
 /*****************************************************************************/
 
-#ifndef __thread_include__
-#define __thread_include__
+#ifndef __Bell_include__
+#define __Bell_include__
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 
-#include "thread/customer.h"
-
-class Thread : public Customer
+class Bell
+/* Hier muesst ihr selbst Code vervollstaendigen */ 
  {
 private:
-      Thread (const Thread &copy); // Verhindere Kopieren
+    Bell(const Bell &copy); // Verhindere Kopieren
 public:
-      Thread(void* tos) : Customer(tos) {}
- };
+    Bell() {}
+/* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+};
 
 #endif

@@ -2,25 +2,29 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                             T H R E A D                                   */
+/*                   G U A R D E D _ O R G A N I Z E R                       */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Benutzerschnittstelle eines Threads.                                      */
+/* Systemaufrufschnittstelle zum Organizer.                                  */
 /*****************************************************************************/
 
-#ifndef __thread_include__
-#define __thread_include__
+#ifndef __Guarded_Organizer_include__
+#define __Guarded_Organizer_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "syscall/thread.h"
+#include "thread/organizer.h"
+#include "guard/secure.h"
 
-#include "thread/customer.h"
-
-class Thread : public Customer
- {
+class Guarded_Organizer : public Organizer
+{
 private:
-      Thread (const Thread &copy); // Verhindere Kopieren
+      Guarded_Organizer (const Guarded_Organizer &copy); // Verhindere Kopieren
 public:
-      Thread(void* tos) : Customer(tos) {}
- };
+    Guarded_Organizer () {}
+  	void ready(Thread& that);
+  	void exit();
+  	void kill(Thread& that);
+  	void resume();
+};
 
 #endif

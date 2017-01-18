@@ -2,25 +2,34 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                             T H R E A D                                   */
+/*                    G U A R D E D _ O R G A N I Z E R                      */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Benutzerschnittstelle eines Threads.                                      */
+/* Systemaufrufschnittstelle zum Organizer.                                  */
 /*****************************************************************************/
 
-#ifndef __thread_include__
-#define __thread_include__
+#include "syscall/guarded_organizer.h"
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+void Guarded_Organizer::ready(Thread& that)
+{
+	Secure sec;
+	Scheduler::ready(that);
+}
 
-#include "thread/customer.h"
+void Guarded_Organizer::exit()
+{
+	Secure sec;
+	Scheduler::exit();
+}
 
-class Thread : public Customer
- {
-private:
-      Thread (const Thread &copy); // Verhindere Kopieren
-public:
-      Thread(void* tos) : Customer(tos) {}
- };
+void Guarded_Organizer::kill(Thread& that)
+{
+	Secure sec;
+	Organizer::kill(that);
+}
 
-#endif
+void Guarded_Organizer::resume()
+{
+	Secure secure;
+	Scheduler::resume();
+}

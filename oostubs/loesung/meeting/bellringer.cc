@@ -2,25 +2,13 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                             T H R E A D                                   */
+/*                          B E L L R I N G E R                              */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Benutzerschnittstelle eines Threads.                                      */
+/* Der "Gloeckner" wird im Rahmen der Timer-Epilog Bearbeitung aktiviert.    */
+/* Er prueft, ob irgendwelche Glocken (Bell-Objekte) laeuten muessen. Die    */
+/* Glocken befinden sich in einer Queue, die der Gloeckner verwaltet.        */
 /*****************************************************************************/
-
-#ifndef __thread_include__
-#define __thread_include__
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 
-#include "thread/customer.h"
-
-class Thread : public Customer
- {
-private:
-      Thread (const Thread &copy); // Verhindere Kopieren
-public:
-      Thread(void* tos) : Customer(tos) {}
- };
-
-#endif

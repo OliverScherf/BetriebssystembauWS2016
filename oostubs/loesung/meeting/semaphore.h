@@ -2,25 +2,34 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                             T H R E A D                                   */
+/*                           S E M A P H O R E                               */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Benutzerschnittstelle eines Threads.                                      */
+/* Semaphore werden zur Synchronisation von Threads verwendet.               */
 /*****************************************************************************/
 
-#ifndef __thread_include__
-#define __thread_include__
+#ifndef __Semaphore_include__
+#define __Semaphore_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
-
+        
+#include "meeting/waitingroom.h"
+#include "syscall/guarded_organizer.h"
 #include "thread/customer.h"
 
-class Thread : public Customer
+extern Guarded_Organizer scheduler;
+
+class Semaphore : public Waitingroom
  {
 private:
-      Thread (const Thread &copy); // Verhindere Kopieren
+    Semaphore (const Semaphore &copy); // Verhindere Kopieren
+    const int max_counter;
+    volatile int counter;
+    void p ();
+    void v ();
 public:
-      Thread(void* tos) : Customer(tos) {}
+    Semaphore (int c) : max_counter(c), counter(c) {};
+    void wait ();
+    void signal ();
  };
 
 #endif

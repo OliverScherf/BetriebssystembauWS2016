@@ -2,25 +2,25 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                             T H R E A D                                   */
+/*                         G U A R D E D _ B U Z Z E R                       */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Benutzerschnittstelle eines Threads.                                      */
+/* Schnittstelle von Anwendungsthreads zu Buzzer-Objekten.                   */
 /*****************************************************************************/
 
-#ifndef __thread_include__
-#define __thread_include__
+#ifndef __Guarded_Buzzer_include__
+#define __Guarded_Buzzer_include__
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 
-#include "thread/customer.h"
-
-class Thread : public Customer
- {
+class Guarded_Buzzer
+/* Hier muesst ihr selbst Code vervollstaendigen */ 
+{
 private:
-      Thread (const Thread &copy); // Verhindere Kopieren
+    Guarded_Buzzer(const Guarded_Buzzer &copy); // Verhindere Kopieren
 public:
-      Thread(void* tos) : Customer(tos) {}
- };
+    Guarded_Buzzer() {}
+/* Hier muesst ihr selbst Code vervollstaendigen */ 
+};
 
 #endif

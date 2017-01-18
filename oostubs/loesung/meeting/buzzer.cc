@@ -2,25 +2,12 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                             T H R E A D                                   */
+/*                               B U Z Z E R                                 */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Benutzerschnittstelle eines Threads.                                      */
+/* Mit Hilfe des "Weckers" koennen Prozesse eine bestimmte Zeit lang         */
+/* schlafen und sich dann wecken lassen.                                     */
 /*****************************************************************************/
 
-#ifndef __thread_include__
-#define __thread_include__
-
+/* INCLUDES */
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
-
-#include "thread/customer.h"
-
-class Thread : public Customer
- {
-private:
-      Thread (const Thread &copy); // Verhindere Kopieren
-public:
-      Thread(void* tos) : Customer(tos) {}
- };
-
-#endif

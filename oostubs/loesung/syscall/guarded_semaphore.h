@@ -2,25 +2,26 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                             T H R E A D                                   */
+/*                   G U A R D E D _ S E M A P H O R E                       */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Benutzerschnittstelle eines Threads.                                      */
+/* Systemaufrufschnittstelle zum Semaphor.                                   */
 /*****************************************************************************/
 
-#ifndef __thread_include__
-#define __thread_include__
+#ifndef __Guarded_Semaphore_include__
+#define __Guarded_Semaphore_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
-
-#include "thread/customer.h"
-
-class Thread : public Customer
+#include "meeting/semaphore.h"
+#include "guard/secure.h"
+        
+class Guarded_Semaphore : public Semaphore
  {
 private:
-      Thread (const Thread &copy); // Verhindere Kopieren
+    Guarded_Semaphore (const Guarded_Semaphore &copy); // Verhindere Kopieren
 public:
-      Thread(void* tos) : Customer(tos) {}
+    Guarded_Semaphore (int c) : Semaphore(c){}
+    void wait();
+    void signal();
  };
 
 #endif

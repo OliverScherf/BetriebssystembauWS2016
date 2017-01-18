@@ -15,11 +15,11 @@
 #include "guard/gate.h"
 #include "machine/pit.h"
 #include "machine/plugbox.h"
-#include "syscall/guarded_scheduler.h"
+#include "syscall/guarded_organizer.h"
 #include "machine/pic.h"
 
 extern Plugbox plugbox;
-extern Guarded_Scheduler scheduler;
+extern Guarded_Organizer scheduler;
 extern PIC pic;
 
 class Watch : public Gate, public PIT

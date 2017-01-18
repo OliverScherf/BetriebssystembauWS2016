@@ -2,25 +2,25 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                             T H R E A D                                   */
+/*                   G U A R D E D _ K E Y B O A R D                         */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Benutzerschnittstelle eines Threads.                                      */
+/* Systemaufrufschnittstelle zur Tastatur.                                   */
 /*****************************************************************************/
 
-#ifndef __thread_include__
-#define __thread_include__
+#ifndef __Guarded_Keyboard_include__
+#define __Guarded_Keyboard_include__
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
-
-#include "thread/customer.h"
-
-class Thread : public Customer
+        
+class Guarded_Keyboard 
+/* Hier muesst ihr selbst Code vervollstaendigen */         
  {
 private:
-      Thread (const Thread &copy); // Verhindere Kopieren
+      Guarded_Keyboard (const Guarded_Keyboard &copy); // Verhindere Kopieren
 public:
-      Thread(void* tos) : Customer(tos) {}
+      Guarded_Keyboard () {}
+/* Hier muesst ihr selbst Code vervollstaendigen */         
  };
 
 #endif
