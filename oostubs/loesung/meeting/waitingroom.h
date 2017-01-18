@@ -21,7 +21,7 @@ extern cga_sm::CGA_Stream cga_sm::kout;
 
 class Customer; // Forward declaration
 
-class Waitingroom: public Queue
+class Waitingroom : public Queue
 {
 private:
 	Waitingroom(const Waitingroom &copy); // Verhindere Kopieren

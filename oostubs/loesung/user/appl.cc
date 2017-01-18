@@ -23,9 +23,9 @@ void Application::action() {
 			count++;
 			semaphore->wait();
 			kout.setpos(x, y);
-			//kout << "Application at y : " << y << " is running: "
-			//		<< RUN_SYMBOLS[current_symbol] << "; Count: " << count << endl;
-			kout << "a" << endl;
+			kout << "Application at y : " << y << " is running: "
+					<< RUN_SYMBOLS[current_symbol] << "; Count: " << count << endl;
+			//kout << "a" << endl;
 			kout.flush();
 			//for (int i = 0; i < 100000; ++i);
 			semaphore->signal();

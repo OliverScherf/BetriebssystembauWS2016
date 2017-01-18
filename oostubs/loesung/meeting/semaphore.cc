@@ -8,7 +8,7 @@
 /* Semaphore werden zur Synchronisation von Threads verwendet.               */
 /*****************************************************************************/
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+/* Hier muesst ihr selbst Code vervollstaendigen */
 
 #include "meeting/semaphore.h"
 
@@ -21,7 +21,7 @@ void Semaphore::p()
 		return;
 	}
 	scheduler.Organizer::block(*((Customer*) scheduler.active()), *this);
-	counter--;
+	//counter--;
 }
 
 void Semaphore::v()
@@ -31,13 +31,18 @@ void Semaphore::v()
 	{
 		return;
 	}
-	counter++;
+	// counter++;
 	Customer* customer = (Customer*) dequeue();
 	if (customer != 0) {
 		scheduler.Organizer::wakeup(*customer);
-	} else {
-		kout << "waitingroom empty " << counter << endl;
-		if (counter == 0) {
+	}
+	else
+	{
+		counter++;
+		//kout << "waitingroom empty " << counter << endl;
+		if (counter == 0)
+		{
+			kout << "Semaphore counter error!" << counter << endl;
 			cpu.halt();
 		}
 	}
