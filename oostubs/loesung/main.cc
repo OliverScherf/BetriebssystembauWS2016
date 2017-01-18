@@ -9,6 +9,7 @@
 #include "syscall/guarded_organizer.h"
 #include "device/watch.h"
 #include "guard/guard.h"
+#include "syscall/guarded_semaphore.h"
 
 using namespace cga_sm;
 
@@ -22,9 +23,11 @@ Guarded_Organizer scheduler;
 Watch cpu_watch(1000); //max: 53000
 Guard guard;
 
-Application app(5, 20);
-Application app2(5, 21);
-Application app3(5, 22);
+Guarded_Semaphore sem(1);
+
+Application app(5, 20, &sem);
+Application app2(5, 21, &sem);
+Application app3(5, 22, &sem);
 
 
 int main()
