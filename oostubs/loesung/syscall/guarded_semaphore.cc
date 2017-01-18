@@ -9,3 +9,17 @@
 /*****************************************************************************/
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+#include "syscall/guarded_semaphore.h"
+
+void Guarded_Semaphore::wait()
+{
+	Secure sec;
+	Semaphore::wait();
+}
+
+void Guarded_Semaphore::signal()
+{
+	Secure sec;
+	Semaphore::signal();
+}

@@ -13,15 +13,18 @@
 
 #include "syscall/thread.h"
 #include "thread/organizer.h"
-        
-class Guarded_Organizer 
- : public Organizer
- {
+#include "guard/secure.h"
+
+class Guarded_Organizer : public Organizer
+{
 private:
       Guarded_Organizer (const Guarded_Organizer &copy); // Verhindere Kopieren
 public:
-      Guarded_Organizer () {}
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- };
+    Guarded_Organizer () {}
+  	void ready(Thread& that);
+  	void exit();
+  	void kill(Thread& that);
+  	void resume();
+};
 
 #endif

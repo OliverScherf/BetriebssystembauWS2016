@@ -11,14 +11,25 @@
 #ifndef __Semaphore_include__
 #define __Semaphore_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
         
-class Semaphore 
-/* Hier muesst ihr selbst Code vervollstaendigen */         
+#include "meeting/waitingroom.h"
+#include "syscall/guarded_organizer.h"
+#include "thread/customer.h"
+
+extern Guarded_Organizer scheduler;
+
+class Semaphore : public Waitingroom
  {
 private:
     Semaphore (const Semaphore &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */          
+    const int max_counter;
+    volatile int counter;
+    void p ();
+    void v ();
+public:
+    Semaphore (int c) : max_counter(c), counter(c) {};
+    void wait ();
+    void signal ();
  };
 
 #endif

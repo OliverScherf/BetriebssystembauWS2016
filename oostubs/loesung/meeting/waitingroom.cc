@@ -9,3 +9,20 @@
 /*****************************************************************************/
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+#include "meeting/waitingroom.h"
+
+Waitingroom::~Waitingroom()
+{
+	Customer* elem = (Customer*) this->dequeue();
+	while (elem != 0)
+	{
+		elem->waiting_in(0x00);
+		elem = (Customer*) this->dequeue();
+	}
+}
+
+void Waitingroom::remove(Customer* customer)
+{
+	this->remove(customer);
+}

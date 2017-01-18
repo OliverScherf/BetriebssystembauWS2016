@@ -8,4 +8,28 @@
 /* Systemaufrufschnittstelle zum Organizer.                                  */
 /*****************************************************************************/
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "syscall/guarded_organizer.h"
+
+void Guarded_Organizer::ready(Thread& that)
+{
+	Secure sec;
+	Scheduler::ready(that);
+}
+
+void Guarded_Organizer::exit()
+{
+	Secure sec;
+	Scheduler::exit();
+}
+
+void Guarded_Organizer::kill(Thread& that)
+{
+	Secure sec;
+	Organizer::kill(that);
+}
+
+void Guarded_Organizer::resume()
+{
+	Secure secure;
+	Scheduler::resume();
+}

@@ -16,14 +16,14 @@
 
 class Customer; // Forward declaration
 
-class Waitingroom 
- : public Queue
+class Waitingroom: public Queue
 {
 private:
-    Waitingroom(const Waitingroom &copy); // Verhindere Kopieren
+	Waitingroom(const Waitingroom &copy); // Verhindere Kopieren
 public:
-    Waitingroom() {}
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+	Waitingroom() {}
+	virtual ~Waitingroom();
+	virtual void remove(Customer* customer);
 };
 
 #endif
