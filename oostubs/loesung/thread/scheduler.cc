@@ -24,6 +24,10 @@ void Scheduler::schedule()
 void Scheduler::exit()
 {
     Entrant* current = (Entrant*) readyList.dequeue();
+    if (current == 0) {
+    	//kout << "readylIst was empty" << endl;
+    	cpu.halt();
+    }
     dispatch(*current);
 }
 
@@ -34,7 +38,7 @@ void Scheduler::kill(Entrant& that)
 
 void Scheduler::resume()
 {
-	Entrant* next = (Entrant*)readyList.dequeue();
     readyList.enqueue((Entrant*) active());
+	Entrant* next = (Entrant*)readyList.dequeue();
     dispatch(*next);
 }

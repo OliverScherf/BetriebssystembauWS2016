@@ -15,6 +15,11 @@
 #include "thread/scheduler.h"
 #include "thread/customer.h"
 #include "meeting/waitingroom.h"
+#include "device/cgastr.h"
+
+using namespace cga_sm;
+
+extern cga_sm::CGA_Stream cga_sm::kout;
 
 class Organizer : public Scheduler
 {

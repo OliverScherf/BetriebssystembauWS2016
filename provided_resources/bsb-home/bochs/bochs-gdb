@@ -29,7 +29,7 @@ VGABIOS="vgaromimage: file=$BOCHSDIR/bios/VGABIOS-elpin-2.40"
 
 if [ $(basename $0) = bochs-gdb ]; then
 	# append the gdb settings; use the user id as the port number
-	GDB="gdbstub: enabled=1, port=$USERID, text_base=0, data_base=0, bss_base=0"
+	GDB="gdbstub: enabled=1, port=$((USERID+1000)), text_base=0, data_base=0, bss_base=0"
 
 	echo "break main" > /tmp/gdbcommands.$USERID
 	echo "target remote localhost:$USERID" >> /tmp/gdbcommands.$USERID

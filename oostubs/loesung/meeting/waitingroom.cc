@@ -14,6 +14,7 @@
 
 Waitingroom::~Waitingroom()
 {
+	kout << "Destruct Waitingroom" << endl;
 	Customer* elem = (Customer*) this->dequeue();
 	while (elem != 0)
 	{

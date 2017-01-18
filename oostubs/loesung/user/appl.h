@@ -14,6 +14,7 @@
 #include "device/cgastr.h"
 #include "guard/secure.h"
 #include "syscall/thread.h"
+#include "syscall/guarded_semaphore.h"
 
 using namespace cga_sm;
 
@@ -29,8 +30,10 @@ private:
     static const int STACK_SIZE = 1024;
     char stack[STACK_SIZE];
     int count;
+    Guarded_Semaphore* semaphore;
 public:
-    Application (int x, int y) : Thread(&stack + STACK_SIZE - 1), x(x), y(y) { current_symbol = 0; count = 0;}
+    Application (int x, int y, Guarded_Semaphore* semaphore) : Thread(&stack + STACK_SIZE - 1), x(x), y(y),
+															   semaphore(semaphore) { current_symbol = 0; count = 0;}
     const char* RUN_SYMBOLS = "-/*\\";
     const int NUM_RUN_SYMBOLS = 4;
     Application();

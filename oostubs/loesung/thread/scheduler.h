@@ -17,7 +17,8 @@
 #include "guard/guard.h"
 #include "device/cgastr.h"
 
-//extern Guard guard;
+using namespace cga_sm;
+
 extern cga_sm::CGA_Stream cga_sm::kout;
 
 

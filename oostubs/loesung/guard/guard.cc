@@ -35,16 +35,8 @@ void Guard::leave()
 
 void Guard::relay(Gate* item)
 {
-	// int x,y;
-    // cga_sm::kout.getpos(x, y);
-	// cga_sm::kout.setpos(1,1);
-	// cga_sm::kout << item->queued() << cga_sm::endl;
-	// cga_sm::kout.setpos(x,y);
 	if(!(item->queued()))
 	{
-		// queued++;
-		// cga_sm::kout.setpos(40,10);
-		// cga_sm::kout << "enqueued, count: " << queued << cga_sm::endl;
 		queue.enqueue(item);
 		item->queued(true);
 	}

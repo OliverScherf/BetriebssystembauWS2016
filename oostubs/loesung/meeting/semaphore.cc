@@ -20,7 +20,7 @@ void Semaphore::p()
 		counter--;
 		return;
 	}
-	scheduler.block(*((Customer*) scheduler.active()), *this);
+	scheduler.Organizer::block(*((Customer*) scheduler.active()), *this);
 	counter--;
 }
 
@@ -32,7 +32,15 @@ void Semaphore::v()
 		return;
 	}
 	counter++;
-	scheduler.wakeup(*((Customer*) dequeue()));
+	Customer* customer = (Customer*) dequeue();
+	if (customer != 0) {
+		scheduler.Organizer::wakeup(*customer);
+	} else {
+		kout << "waitingroom empty " << counter << endl;
+		if (counter == 0) {
+			cpu.halt();
+		}
+	}
 }
 
 void Semaphore::wait()

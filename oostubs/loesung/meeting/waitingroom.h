@@ -13,6 +13,11 @@
 
 #include "object/queue.h"
 #include "thread/customer.h"
+#include "device/cgastr.h"
+
+using namespace cga_sm;
+
+extern cga_sm::CGA_Stream cga_sm::kout;
 
 class Customer; // Forward declaration
 
