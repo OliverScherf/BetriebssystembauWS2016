@@ -22,13 +22,14 @@ Guarded_Organizer scheduler;
 Watch cpu_watch(1000); //max: 53000
 Guard guard;
 
+Application app(5, 20);
+Application app2(5, 21);
+Application app3(5, 22);
+
+
 int main()
 {
     keyboard.plugin();
-
-    Application app(5, 20);
-    Application app2(5, 21);
-    Application app3(5, 22);
 
     scheduler.ready(app);
     scheduler.ready(app2);
@@ -38,7 +39,7 @@ int main()
 
     cpu_watch.windup();
     cpu.enable_int();
-    scheduler.schedule();
+    scheduler.Scheduler::schedule();
 
     return 0;
  }
