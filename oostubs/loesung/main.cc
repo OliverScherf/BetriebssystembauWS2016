@@ -4,7 +4,7 @@
 #include "device/cgastr.h"
 #include "machine/plugbox.h"
 #include "device/panic.h"
-#include "device/keyboard.h"
+#include "syscall/guarded_keyboard.h"
 #include "machine/pic.h"
 #include "syscall/guarded_organizer.h"
 #include "device/watch.h"
@@ -18,14 +18,14 @@ CPU cpu;
 Plugbox plugbox;
 Panic panic;
 PIC pic;
-Keyboard keyboard;
+Guarded_Keyboard keyboard;
 Guarded_Organizer scheduler;
 Watch cpu_watch(1000); //max: 53000
 Guard guard;
 
 Guarded_Semaphore sem(1);
 
-Application app(5, 20, &sem);
+Application app1(5, 20, &sem);
 Application app2(5, 21, &sem);
 Application app3(5, 22, &sem);
 
@@ -34,7 +34,7 @@ int main()
 {
     keyboard.plugin();
 
-    scheduler.ready(app);
+    scheduler.ready(app1);
     scheduler.ready(app2);
     scheduler.ready(app3);
 

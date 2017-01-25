@@ -31,7 +31,6 @@ void Semaphore::v()
 	{
 		return;
 	}
-	// counter++;
 	Customer* customer = (Customer*) dequeue();
 	if (customer != 0) {
 		scheduler.Organizer::wakeup(*customer);
@@ -39,7 +38,6 @@ void Semaphore::v()
 	else
 	{
 		counter++;
-		//kout << "waitingroom empty " << counter << endl;
 		if (counter == 0)
 		{
 			kout << "Semaphore counter error!" << counter << endl;

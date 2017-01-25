@@ -11,7 +11,7 @@
 #ifndef __Semaphore_include__
 #define __Semaphore_include__
 
-        
+
 #include "meeting/waitingroom.h"
 #include "syscall/guarded_organizer.h"
 #include "thread/customer.h"

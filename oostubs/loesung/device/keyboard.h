@@ -17,6 +17,7 @@
 #include "device/cgastr.h"
 #include "machine/plugbox.h"
 #include "machine/pic.h"
+#include "meeting/semaphore.h"
 
 extern Plugbox plugbox;
 extern PIC pic;
@@ -26,15 +27,17 @@ class Keyboard : public Gate, public Keyboard_Controller
 private:
       Keyboard (const Keyboard &copy); // Verhindere Kopieren
       Key triggered_key;
-
+      Semaphore semaphore;
+      Key buffer;
 public:
-      Keyboard();
+      Keyboard() : semaphore(1){ semaphore.wait(); }
       // PLUGIN: 'Anstoepseln' der Tastatur. Ab sofort werden Tasten erkannt.
       void plugin();
       // void trigger();
 
       bool prologue();
       void epilogue();
+      Key getkey();
  };
 
 #endif

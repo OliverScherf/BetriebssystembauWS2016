@@ -14,11 +14,6 @@
 
 using namespace cga_sm;
 
-Keyboard::Keyboard()
-{
-
-}
-
 void Keyboard::plugin()
 {
   plugbox.assign(plugbox.KEYBOARD, *this);
@@ -37,25 +32,25 @@ void Keyboard::plugin()
 bool Keyboard::prologue()
 {
   triggered_key = key_hit();
+  if (triggered_key.valid())
+    buffer = triggered_key;
   return triggered_key.valid(); // if key invalid
 }
-
 
 /* Hier wird das im Rahmen der Prolog-Behandlung ausgelesene Zeichen auf
  * dem Bildschirm mit Hilfe des globalen CGA_Stream Objekts kout ausgegeben.*/
 void Keyboard::epilogue ()
 {
-  if (triggered_key.ctrl())
-    if(triggered_key.alt())
-      if (triggered_key.scancode() == Key::scan::del)
-        reboot();
+    if (triggered_key.ctrl())
+        if(triggered_key.alt())
+          if (triggered_key.scancode() == Key::scan::del)
+            reboot();
+    semaphore.signal();
+}
 
-  kout.flush();
-  int x,y;
-  kout.getpos(x, y);
-
-  kout.setpos(20, 10);
-  kout << triggered_key;
-  kout.flush();
-  kout.setpos(x,y);
+Key Keyboard::getkey()
+{
+    semaphore.wait();
+    //kout << triggered_key << endl;
+    return buffer;
 }

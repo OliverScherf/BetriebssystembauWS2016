@@ -21,13 +21,25 @@ void Application::action() {
 		current_symbol = (current_symbol + 1) % NUM_RUN_SYMBOLS;
 		{
 			count++;
+			Key triggered_key;
+			if(y == 20 || y == 21)	
+				triggered_key = keyboard.getkey();
+
+
+
 			semaphore->wait();
 			kout.setpos(x, y);
-			kout << "Application at y : " << y << " is running: "
-					<< RUN_SYMBOLS[current_symbol] << "; Count: " << count << endl;
+			if(y == 20 || y == 21)
+				kout << "Application at y : " << y << " is running: "
+					<< RUN_SYMBOLS[current_symbol] << "; Count: " << count
+					<< "; Char: \"" << triggered_key << "\""<< endl;
+			else
+				kout << "Application at y : " << y << " is running: "
+				<< RUN_SYMBOLS[current_symbol] << "; Count: " << count
+				<< endl;
 			//kout << "a" << endl;
 			kout.flush();
-			//for (int i = 0; i < 100000; ++i);
+
 			semaphore->signal();
 		}
 	}

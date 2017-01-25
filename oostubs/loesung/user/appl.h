@@ -15,10 +15,12 @@
 #include "guard/secure.h"
 #include "syscall/thread.h"
 #include "syscall/guarded_semaphore.h"
+#include "syscall/guarded_keyboard.h"
 
 using namespace cga_sm;
 
 //extern CGA_Stream kout;
+extern Guarded_Keyboard keyboard;
 
 class Application : public Thread
 {
