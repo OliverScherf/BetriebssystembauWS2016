@@ -26,8 +26,14 @@
 // ENQUEUE: Das angegebene Element wird an das Ende der Liste angefuegt.
 
 void Queue::enqueue (Chain* item)
- { 
+ {
    item->next = 0;       // Das neue Element besitzt noch keinen Nachfolger.
+   // aus vorlesung: (unterbrechungstransparentes enqueue)
+   // Chain** next = tail;
+   // tail = &item->next;
+   // while(*last != 0)
+   //     last = &((*last)->next);
+   // *last = item;
    *tail = item;         // Das Element an das Ende der Liste anfuegen
    tail = &(item->next); // und den tail Zeiger aktualisieren.
  }
@@ -50,6 +56,24 @@ Chain* Queue::dequeue ()
 	      item->next = 0;    // den Eintrag ueber den Nachfolger loeschen.
     }
    return item;
+
+   // unterbrechungstransparentes dequeue
+   // Chain *item = head;
+   // if(!head)
+   //     return 0;
+   // if(head->next) //>= 2 Elt
+   // {
+   //     head = head->next;
+   //     return item;
+   // }
+   // tail = &head;
+   // Chain *lost = item->next;
+   // while(lost)
+   // {
+   //     Chain* x = lost->next;
+   //     enqueue(lost);
+   //     lost = x;
+   // }
  }
 
 // REMOVE: Sucht das angegebene Element in der Liste und entfernt es.
