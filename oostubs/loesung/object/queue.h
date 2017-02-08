@@ -22,9 +22,8 @@ private:
       Queue(const Queue &copy); // Verhindere Kopieren
 
 protected:
-      Chain* head;
       Chain** tail;
-
+      Chain* head;
 public:
       Queue () { head = 0; tail = &head; }
       void enqueue (Chain* item);

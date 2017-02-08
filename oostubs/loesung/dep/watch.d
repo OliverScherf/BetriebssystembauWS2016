@@ -5,4 +5,5 @@ build/watch.o: device/watch.cc device/watch.h guard/gate.h object/chain.h \
  device/panic.h syscall/guarded_organizer.h syscall/thread.h \
  thread/customer.h thread/entrant.h thread/coroutine.h machine/toc.h \
  meeting/waitingroom.h thread/organizer.h thread/scheduler.h \
- thread/dispatch.h guard/secure.h machine/pic.h
+ thread/dispatch.h guard/secure.h machine/pic.h meeting/bellringer.h \
+ object/list.h meeting/bell.h

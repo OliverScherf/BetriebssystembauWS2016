@@ -26,7 +26,7 @@ Buzzer::~Buzzer()
 void Buzzer::ring()
 {
     Customer* customer;
-	while (customer = (Customer*)dequeue())
+	while ((customer = (Customer*) dequeue()))
     {
 		scheduler.Organizer::wakeup(*customer);
 	}
@@ -34,10 +34,14 @@ void Buzzer::ring()
 
 void Buzzer::set(int ms)
 {
-    bellringer.job(this, ms);
+	if (wait() <= 0)
+		bellringer.job(this, ms);
+	else
+		wait(ms);
 }
 
 void Buzzer::sleep()
 {
 	scheduler.Organizer::block(*((Customer*) scheduler.active()), *this);
+
 }

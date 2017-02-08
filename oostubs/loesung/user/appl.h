@@ -38,7 +38,7 @@ private:
 public:
     Application (int x, int y, Guarded_Semaphore* semaphore, Guarded_Buzzer* buzzer)
         : Thread(&stack + STACK_SIZE - 1), x(x), y(y), semaphore(semaphore), buzzer(buzzer)
-            { current_symbol = 0; count = 0; buzzer->set(1); }
+            { current_symbol = 0; count = 0;  }
     const char* RUN_SYMBOLS = "-/*\\";
     const int NUM_RUN_SYMBOLS = 4;
     Application();

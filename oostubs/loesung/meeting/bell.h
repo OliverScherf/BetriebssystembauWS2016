@@ -33,8 +33,8 @@ public:
     inline Bell() { counter = 0; }
     inline void wait(int val) { counter = val; }
     inline int wait() { return counter; }
-    inline void tick() { counter--; kout << counter << endl;}
-    inline bool run_down() { return !counter; }
+    inline void tick() { counter--;}
+    inline bool run_down() { return counter <= 0; }
     virtual void ring() = 0;
 /* Hier muesst ihr selbst Code vervollstaendigen */
 

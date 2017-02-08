@@ -19,17 +19,15 @@ void Bellringer::check()
     Bell* item = (Bell*)first();
     while(item)
     {
-        item->tick();
+    	Bell* next = (Bell*)item->next;;
         if(item->run_down())
         {
-            kout << "check!!" << endl;
             remove(item);
-            kout << "check2!!" << endl;
             item->ring();
-        }
-        item = (Bell*)item->next;
+        } else
+        	item->tick();
+        item = next;
     }
-
 }
 
 void Bellringer::job(Bell* bell, int ticks)

@@ -36,15 +36,16 @@ Guarded_Buzzer buzzer;
 Application app1(5, 20, &sem, &buzzer);
 Application app2(5, 21, &sem, &buzzer);
 Application app3(5, 22, &sem, &buzzer);
+Application app4(5, 23, &sem, &buzzer);
 
 
 int main()
 {
     keyboard.plugin();
-
     scheduler.ready(app1);
     scheduler.ready(app2);
     scheduler.ready(app3);
+    scheduler.ready(app4);
 
     guard.enter();
 

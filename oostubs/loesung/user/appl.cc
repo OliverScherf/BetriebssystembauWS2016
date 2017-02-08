@@ -25,10 +25,10 @@ void Application::action() {
 			if(y == 21)
 				triggered_key = keyboard.getkey();
 
-			if (y == 20)
+			if (y == 20 || y == 22)
 			{
+				buzzer->set(100);
 				buzzer->sleep();
-				buzzer->set(1);
 			}
 
 			semaphore->wait();
