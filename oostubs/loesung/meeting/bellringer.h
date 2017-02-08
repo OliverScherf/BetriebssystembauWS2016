@@ -13,16 +13,24 @@
 #ifndef __Bellringer_include__
 #define __Bellringer_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "object/list.h"
+#include "meeting/bell.h"
 
-class Bellringer
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "device/cgastr.h"
+using namespace cga_sm;
+/* Hier muesst ihr selbst Code vervollstaendigen */
+
+class Bellringer : public List
+/* Hier muesst ihr selbst Code vervollstaendigen */
 {
 private:
    Bellringer(const Bellringer &copy); // Verhindere Kopieren
 public:
    Bellringer() {}
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+   void check();
+   void job(Bell* bell, int ticks);
+   void cancel(Bell* bell);
+/* Hier muesst ihr selbst Code vervollstaendigen */
 };
 
 #endif

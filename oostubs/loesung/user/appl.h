@@ -16,6 +16,7 @@
 #include "syscall/thread.h"
 #include "syscall/guarded_semaphore.h"
 #include "syscall/guarded_keyboard.h"
+#include "syscall/guarded_buzzer.h"
 
 using namespace cga_sm;
 
@@ -33,9 +34,11 @@ private:
     char stack[STACK_SIZE];
     int count;
     Guarded_Semaphore* semaphore;
+    Guarded_Buzzer* buzzer;
 public:
-    Application (int x, int y, Guarded_Semaphore* semaphore) : Thread(&stack + STACK_SIZE - 1), x(x), y(y),
-															   semaphore(semaphore) { current_symbol = 0; count = 0;}
+    Application (int x, int y, Guarded_Semaphore* semaphore, Guarded_Buzzer* buzzer)
+        : Thread(&stack + STACK_SIZE - 1), x(x), y(y), semaphore(semaphore), buzzer(buzzer)
+            { current_symbol = 0; count = 0; buzzer->set(1); }
     const char* RUN_SYMBOLS = "-/*\\";
     const int NUM_RUN_SYMBOLS = 4;
     Application();

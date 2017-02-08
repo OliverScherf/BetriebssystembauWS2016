@@ -17,10 +17,12 @@
 #include "machine/plugbox.h"
 #include "syscall/guarded_organizer.h"
 #include "machine/pic.h"
+#include "meeting/bellringer.h"
 
 extern Plugbox plugbox;
 extern Guarded_Organizer scheduler;
 extern PIC pic;
+extern Bellringer bellringer;
 
 class Watch : public Gate, public PIT
  {

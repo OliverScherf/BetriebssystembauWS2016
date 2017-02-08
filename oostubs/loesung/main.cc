@@ -10,6 +10,9 @@
 #include "device/watch.h"
 #include "guard/guard.h"
 #include "syscall/guarded_semaphore.h"
+#include "meeting/bellringer.h"
+#include "syscall/guarded_buzzer.h"
+
 
 using namespace cga_sm;
 
@@ -22,12 +25,17 @@ Guarded_Keyboard keyboard;
 Guarded_Organizer scheduler;
 Watch cpu_watch(1000); //max: 53000
 Guard guard;
+Bellringer bellringer;
+
 
 Guarded_Semaphore sem(1);
 
-Application app1(5, 20, &sem);
-Application app2(5, 21, &sem);
-Application app3(5, 22, &sem);
+Guarded_Buzzer buzzer;
+
+
+Application app1(5, 20, &sem, &buzzer);
+Application app2(5, 21, &sem, &buzzer);
+Application app3(5, 22, &sem, &buzzer);
 
 
 int main()

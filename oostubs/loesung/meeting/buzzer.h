@@ -12,14 +12,29 @@
 #ifndef __Buzzer_include__
 #define __Buzzer_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "meeting/bell.h"
+#include "meeting/waitingroom.h"
+#include "syscall/guarded_organizer.h"
+#include "meeting/bellringer.h"
+/* Hier muesst ihr selbst Code vervollstaendigen */
 
-class Buzzer
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+
+extern Guarded_Organizer scheduler;
+extern Bellringer bellringer;
+
+
+class Buzzer : public Bell, public Waitingroom
+/* Hier muesst ihr selbst Code vervollstaendigen */
 {
 private:
     Buzzer(const Buzzer &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+public:
+    Buzzer();
+    virtual ~Buzzer();
+    virtual void ring();
+    void set(int ms);
+    void sleep();
 };
 
 #endif

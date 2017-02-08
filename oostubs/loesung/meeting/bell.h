@@ -14,16 +14,29 @@
 #ifndef __Bell_include__
 #define __Bell_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "object/chain.h"
 
-class Bell
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+#include "device/cgastr.h"
+
+/* Hier muesst ihr selbst Code vervollstaendigen */
+
+using namespace cga_sm;
+
+class Bell : public Chain
+/* Hier muesst ihr selbst Code vervollstaendigen */
  {
 private:
     Bell(const Bell &copy); // Verhindere Kopieren
+    int counter;
 public:
-    Bell() {}
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+    inline Bell() { counter = 0; }
+    inline void wait(int val) { counter = val; }
+    inline int wait() { return counter; }
+    inline void tick() { counter--; kout << counter << endl;}
+    inline bool run_down() { return !counter; }
+    virtual void ring() = 0;
+/* Hier muesst ihr selbst Code vervollstaendigen */
 
 };
 

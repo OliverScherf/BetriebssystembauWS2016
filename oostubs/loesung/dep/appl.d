@@ -7,4 +7,5 @@ build/appl.o: user/appl.cc user/appl.h device/cgastr.h object/o_stream.h \
  syscall/guarded_organizer.h thread/organizer.h thread/scheduler.h \
  thread/dispatch.h syscall/guarded_keyboard.h device/keyboard.h \
  machine/keyctrl.h machine/key.h machine/plugbox.h device/panic.h \
- machine/pic.h
+ machine/pic.h syscall/guarded_buzzer.h meeting/buzzer.h meeting/bell.h \
+ meeting/bellringer.h object/list.h

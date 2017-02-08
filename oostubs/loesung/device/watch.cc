@@ -26,5 +26,6 @@ bool Watch::prologue()
 // EPILOGUE: Epilogue der Uhrenunterbrechung
 void Watch::epilogue()
 {
+	bellringer.check();
 	scheduler.Scheduler::resume();
 }

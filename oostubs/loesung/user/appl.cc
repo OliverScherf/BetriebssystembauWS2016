@@ -22,14 +22,18 @@ void Application::action() {
 		{
 			count++;
 			Key triggered_key;
-			if(y == 20 || y == 21)	
+			if(y == 21)
 				triggered_key = keyboard.getkey();
 
-
+			if (y == 20)
+			{
+				buzzer->sleep();
+				buzzer->set(1);
+			}
 
 			semaphore->wait();
 			kout.setpos(x, y);
-			if(y == 20 || y == 21)
+			if(y == 21)
 				kout << "Application at y : " << y << " is running: "
 					<< RUN_SYMBOLS[current_symbol] << "; Count: " << count
 					<< "; Char: \"" << triggered_key << "\""<< endl;

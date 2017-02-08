@@ -7,7 +7,9 @@ build/main.o: main.cc user/appl.h device/cgastr.h object/o_stream.h \
  syscall/guarded_organizer.h thread/organizer.h thread/scheduler.h \
  thread/dispatch.h syscall/guarded_keyboard.h device/keyboard.h \
  machine/keyctrl.h machine/key.h machine/plugbox.h device/panic.h \
- machine/pic.h machine/cpu.h device/cgastr.h machine/plugbox.h \
- device/panic.h syscall/guarded_keyboard.h machine/pic.h \
- syscall/guarded_organizer.h device/watch.h machine/pit.h guard/guard.h \
- syscall/guarded_semaphore.h
+ machine/pic.h syscall/guarded_buzzer.h meeting/buzzer.h meeting/bell.h \
+ meeting/bellringer.h object/list.h machine/cpu.h device/cgastr.h \
+ machine/plugbox.h device/panic.h syscall/guarded_keyboard.h \
+ machine/pic.h syscall/guarded_organizer.h device/watch.h machine/pit.h \
+ guard/guard.h syscall/guarded_semaphore.h meeting/bellringer.h \
+ syscall/guarded_buzzer.h

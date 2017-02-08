@@ -10,4 +10,34 @@
 /*****************************************************************************/
 
 /* INCLUDES */
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+#include "meeting/buzzer.h"
+
+Buzzer::Buzzer()
+{
+
+}
+
+Buzzer::~Buzzer()
+{
+    bellringer.cancel(this);
+}
+
+void Buzzer::ring()
+{
+    Customer* customer;
+	while (customer = (Customer*)dequeue())
+    {
+		scheduler.Organizer::wakeup(*customer);
+	}
+}
+
+void Buzzer::set(int ms)
+{
+    bellringer.job(this, ms);
+}
+
+void Buzzer::sleep()
+{
+	scheduler.Organizer::block(*((Customer*) scheduler.active()), *this);
+}
