@@ -23,8 +23,8 @@ private:
 
 protected:
       Chain** tail;
-      Chain* head;
 public:
+      Chain* head;
       Queue () { head = 0; tail = &head; }
       void enqueue (Chain* item);
       Chain* dequeue ();

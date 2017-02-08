@@ -21,13 +21,20 @@ void Scheduler::schedule()
   	go(*next);
 }
 
+
 void Scheduler::exit()
 {
-    Entrant* current = (Entrant*) readyList.dequeue();
-    if (current == 0) {
+    Entrant* current;
+    while (!(current = (Entrant*) readyList.dequeue())) {
     	//kout << "readylIst was empty" << endl;
-    	cpu.halt();
+    	isIdling = true;
+    	guard.leave();
+    	cpu.idle();
+    	guard.enter();
     }
+    isIdling = false;
+
+    //kout << "r12312312312321312323eadylIst was NOT empty" << endl;
     dispatch(*current);
 }
 
@@ -36,9 +43,14 @@ void Scheduler::kill(Entrant& that)
     readyList.remove(&that);
 }
 
+// 1 Anwendung in exit() -> wakeup der selben Anwendung
 void Scheduler::resume()
 {
-    readyList.enqueue((Entrant*) active());
-	Entrant* next = (Entrant*)readyList.dequeue();
-    dispatch(*next);
+	if (isIdling)
+		return;
+
+	readyList.enqueue((Entrant*) active());
+		Entrant* next = (Entrant*)readyList.dequeue();
+		dispatch(*next);
 }
+

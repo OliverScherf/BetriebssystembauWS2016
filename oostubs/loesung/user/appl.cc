@@ -27,7 +27,7 @@ void Application::action() {
 
 			if (y == 20 || y == 22)
 			{
-				buzzer->set(100);
+				buzzer->set(10000);
 				buzzer->sleep();
 			}
 

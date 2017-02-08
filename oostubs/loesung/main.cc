@@ -33,10 +33,10 @@ Guarded_Semaphore sem(1);
 Guarded_Buzzer buzzer;
 
 
-Application app1(5, 20, &sem, &buzzer);
-Application app2(5, 21, &sem, &buzzer);
-Application app3(5, 22, &sem, &buzzer);
-Application app4(5, 23, &sem, &buzzer);
+Application app1(5, 20, &sem, &buzzer); //buzzer
+Application app2(5, 21, &sem, &buzzer); //semaphore
+Application app3(5, 22, &sem, &buzzer); //buzzer
+Application app4(5, 23, &sem, &buzzer); //busy kout
 
 
 int main()

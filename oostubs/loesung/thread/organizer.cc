@@ -14,8 +14,8 @@
 void Organizer::block(Customer& customer, Waitingroom& waitingroom) {
 	//kout << "Organizer block" << endl;
 	if (customer.waiting_in() == &waitingroom) {
-		kout << "Customer ist schon im waitingroom!" << endl;
-		cpu.halt();
+		//kout << "Customer ist schon im waitingroom!" << endl;
+		//cpu.halt();
 	}
 	customer.waiting_in(&waitingroom);
 	waitingroom.enqueue(&customer);

@@ -20,20 +20,21 @@
 using namespace cga_sm;
 
 extern cga_sm::CGA_Stream cga_sm::kout;
-
+extern Guard guard;
 
 class Scheduler : public Dispatcher
  {
 private:
 	Scheduler(const Scheduler &copy); // Verhindere Kopieren
 	Queue readyList;
+	bool isIdling;
 public:
 	void ready(Entrant& that);
 	void schedule();
 	void exit();
 	void kill(Entrant& that);
 	void resume();
-    Scheduler(){}
+    Scheduler(){ isIdling = false;}
  };
 
 #endif
